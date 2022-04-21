@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+.App {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, span {font-family:"Poppins"; color:black}
+
+.nav-main {
+  font-family: 'Poppins';
+  font-weight: 600;
+  color: black;
+  text-decoration: none;
+}
+.nav-scrolllink {
+  font-family: 'Poppins';
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+
+}
+
+.contentContainer {
+  margin-top: 50px;
+}
+
+.sectionContainer {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.mainCol {
+  text-align: start;
+}
+
+.welcome { 
+  font-weight: 600;
+  font-size: 48px;
+  margin-bottom: 36px;
+  margin-top: 36px;
+}
+
+.welcomeParagraph {
+  font-weight: 400;
+  font-size: 20px;
+  color: black;
+  margin-top: 24px;
+}
+
+
+@media only screen and (max-width: 760px) { 
+  .welcome { 
+    font-size: 38px;
+  }
+
+}
+
+
+.startBtn {
+  background-color: #8860D0;
+  border-color: #8860D0;
+  border-radius: 16px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+.startSpan {
+  font-weight: 600;
+  font-size: 20px;
+  color:white;
+}
+
+.startImage {
+  width:550px;
+  height: 750px;
+}
+
+.visiosImage {
+  width: 160px;
+  height: 160px;
+  margin-top: 34px;
+}
+
+@media only screen and (max-width: 760px) {
+  .visiosImage {
+    width: 40vw;
+    height: 40vw;
+  }
+}
+
+.sideImage {
+  width: 350px;
+  height: 350px;
+  margin-top: 34px;
+}
+
+.approachTitle {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.subTitleH2 {
+  font-weight: 600;
+  font-size: 28px;
+  color: black;
+  margin-top: 24px;
+}
+
+.sideIcon {
+  width: 150px;
+  height: 150px;
+  margin-top: 34px;
+}
+
+.approachImage {
+  width: 500px;
+  height: 750px;
+  margin-top: 34px;
+}
+
+.titleH2 {
+  text-align: start;
+  font-weight: 400;
+  font-size: 24px;
+  color: #8860D0;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.iconParagraph {
+  font-weight: 600;
+  font-size: 20px;
+  color: black;
+  margin-top: 12px;
+}
+
+.subImage {
+  width: 5vw;
+  height: 5vw;
+  margin: 4px;
+}
+
+.newsTitleH2 {
+  font-weight: 600;
+  font-size: 24px;
+  font-style: italic;
+  color: black;
+  margin-top: 24px;
+}
+
+.newsParagraph {
+  font-weight: 400;
+  font-size: 20px;
+  color: black;
+  margin-top: 12px;
+}
+
+.newsBar {
+  width: 6px;
+  height: 40px;
+}
+
+.newsImage {
+  width: 400px;
+  height: 400px;
+}
+
+
+.statH3 {
+  font-weight: 400;
+  font-size: 24px;
+  color: black;
+}
+.statParagraph {
+  font-weight: 400;
+  font-size: 16px;
+  color: #BBBBBB;
+  margin-top: 8px;
+}
+
+.statBar {
+  width: 4.8px;
+  height: 62.4px;
+}
+
+.featuredCol {
+  text-align: center;
+}
+
+.featuredImage {
+  width: 550px;
+  height: 300px;
+  
+}
+
+.statImage {
+  width: 150px;
+  height: 75px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+
+.soonParagraph {
+  font-weight: 400;
+  font-size: 18px;
+  color: #8860D0;
+  font-style: italic;
+  margin-top: 24px;
+}
+
+.startedForm {
+  margin-top: 24px;
+}
+
+.labelInput {
+  font-weight: 400;
+  font-size: 20px;
+  color: #8860D0;
+}
+
+.input {
+  font-weight: 400;
+  font-size: 20px;
+  color: #000000;
+}
+
+.footerImage {
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-bottom: 16px;
+}
+
+.copyrightText {
+  font-size: 14px;
+}
+@media only screen and (max-width: 760px) { 
+  .footerImage {
+    width: 8vw;
+    height: 8vw;
+
+  }
+
+  .copyrightText { 
+    font-size: 10px;
+  }
+
+
+}
