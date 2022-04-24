@@ -7,11 +7,16 @@
 }
 
 
-h1, h2, h3, h4, h5, h6, p, span {font-family:"Poppins"; color:black}
+h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; color:black}
+
+.mainNavbar {
+  margin-top: 40px;
+}
 
 .nav-main {
   font-family: 'Poppins';
   font-weight: 600;
+  font-size: 30px;
   color: black;
   text-decoration: none;
 }
@@ -217,10 +222,20 @@ h1, h2, h3, h4, h5, h6, p, span {font-family:"Poppins"; color:black}
   margin-top: 24px;
 }
 
+.formParagraph {
+  font-weight: 400;
+  font-size: 18px;
+  color: black;
+  margin-top: 24px;
+}
+
 .labelInput {
   font-weight: 400;
   font-size: 20px;
-  color: #8860D0;
+  color: #323232;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
 }
 
 .input {
@@ -228,6 +243,23 @@ h1, h2, h3, h4, h5, h6, p, span {font-family:"Poppins"; color:black}
   font-size: 20px;
   color: #000000;
 }
+
+
+.rocketImage {
+  width: calc(383px * 0.8);
+  height: calc(737px * 0.8);
+  transform: rotate(15deg);
+  margin-top: 50px;
+}
+
+.leftTraitsCol {
+  text-align: start;
+}
+
+.rightTraitsCol {
+  text-align: end;
+}
+
 
 .footerImage {
   width: 50px;

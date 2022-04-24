@@ -43,8 +43,7 @@ import imgFeatured_1 from './images/moe_banner.svg'
 import imgStat_1 from './images/stat_1_image.svg'
 import imgStat_2 from './images/stat_2_image.svg'
 
-
-
+import imgRocket from './images/success_rocket.svg'
 
 
 
@@ -56,19 +55,19 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-     <Navbar bg="light" variant="light" expand="lg">
-          <Container>
+     <Navbar>
+          <Container className='mainNavbar'>
             <Navbar.Brand href="#home">
             <img
                 alt=""
                 src={logo}
-                width="35"
-                height="35"
+                width="45"
+                height="45"
                 className="d-inline-block align-top "/>{' '} <span className="nav-main">Visios Labs</span>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
+              <Nav className="ms-auto">
                 <Nav.Link >
                   <Link to="vision" className='nav-scrolllink'>Vision</Link> 
                 </Nav.Link>   
@@ -149,7 +148,7 @@ function App() {
               <Col className='mainCol'>
                 <h1 className='welcome'>Your NFT collection. We build it.</h1>
                 <p className='welcomeParagraph'>NFT’s have ushered in a digital revolution. Art has fused with the internet, people can truly own digital art with NFT’s.</p>
-                <p className='welcomeParagraph'>Artists & creators need access to NFT’s, not just coders and industry insiders. We remove the technical barrier of launching NFT collections. So Artists & creators just focus on their craft.</p>
+                <p className='welcomeParagraph'>Artists & creators need access to NFT’s; not just coders and industry insiders. We remove the technical barrier of launching NFT collections. So artists & creators just focus on their craft.</p>
               </Col>
             </Row>
           </Container>
@@ -161,11 +160,11 @@ function App() {
               <Col className='mainCol'>
                 <h1 className='welcome approachTitle'>Our approach</h1>
                 <h2 className='subTitleH2'>Tech is on us</h2>
-                <p className='welcomeParagraph'>We deploy smart contracts, launch the mint page and decentrally store assets for your NFT collection.</p>
+                <p className='welcomeParagraph'>We deploy smart contracts, launch the mint page, and decentrally store assets for your NFT collection.</p>
                 <h2 className='subTitleH2'>Your vision, our guidance</h2>
                 <p className='welcomeParagraph'>We work closely with artists & creators to execute their vision. We guide you through the creation and launch of your NFT collection.</p>
                 <h2 className='subTitleH2' >Artist ownership</h2>
-                <p className='welcomeParagraph' >Anything that we make is 100% owned by the artists & creators. We build it you own it.</p>
+                <p className='welcomeParagraph' >Anything that we make is 100% owned by the artists & creators. We build it, you own it.</p>
 
               </Col>
               <Col>
@@ -190,44 +189,8 @@ function App() {
           </Container>
         </Element>
 
-        <Element id='services' name='services'>
-        <Container className='sectionContainer'>
-            <Row>
-              <Col className='mainCol'>
-                {/* <h2 className='subTitleH2'>Tasks we take care of:</h2> */}
-                <Row>
-                  <Col>
-                    <Image className="sideIcon" src={imgArtwork} />
-                    <p className='iconParagraph'>Artwork <br></br>Generation</p>
-                  </Col>
-                  <Col>
-                    <Image className="sideIcon" src={imgSmartContract}/>
-                    <p className='iconParagraph'>Smart <br></br>Contracts</p>
-
-                  </Col>
-                  <Col>
-                    <Image className="sideIcon" src={imgAsset} />
-                    <p className='iconParagraph'>Asset <br></br>Deployment</p>
-
-                  </Col>
-                  <Col>
-                    <Image className="sideIcon" src={imgWebsite} />
-                    <p className='iconParagraph'>Website <br></br>Development</p>
-
-                  </Col>
-                  <Col>
-                    <Image className="sideIcon" src={imgSupport} />
-                    <p className='iconParagraph'>Continuous <br></br>Support</p>
-
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </Container>
-        </Element>
-
-
-        <Container style={{marginTop: '100px', marginBottom: '50px'}}>
+        
+        {/* <Container style={{marginTop: '100px', marginBottom: '50px'}}>
           <Row>
           <Col>                  
             <Image className='subImage' src={imgSub_1}/>
@@ -260,7 +223,7 @@ function App() {
             <Image className='subImage' src={imgSub_10}/>
           </Col>
           </Row>
-        </Container>
+        </Container> */}
 
         
         <Element styleid='news' name='news'>
@@ -324,6 +287,42 @@ function App() {
           </Container>
         </Element>
 
+        <Element id='services' name='services'>
+        <Container className='sectionContainer'>
+            <Row>
+              <Col className='mainCol'>
+                <h2 className='titleH2'>Tasks we take care of:</h2>
+                <Row>
+                  <Col>
+                    <Image className="sideIcon" src={imgArtwork} />
+                    <p className='iconParagraph'>Artwork <br></br>Generation</p>
+                  </Col>
+                  <Col>
+                    <Image className="sideIcon" src={imgSmartContract}/>
+                    <p className='iconParagraph'>Smart <br></br>Contracts</p>
+
+                  </Col>
+                  <Col>
+                    <Image className="sideIcon" src={imgAsset} />
+                    <p className='iconParagraph'>Asset <br></br>Deployment</p>
+
+                  </Col>
+                  <Col>
+                    <Image className="sideIcon" src={imgWebsite} />
+                    <p className='iconParagraph'>Website <br></br>Development</p>
+
+                  </Col>
+                  <Col>
+                    <Image className="sideIcon" src={imgSupport} />
+                    <p className='iconParagraph'>Continuous <br></br>Support</p>
+
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Container>
+        </Element>
+{/* 
         <Container style={{marginTop: '100px', marginBottom: '50px'}}>
           <Row>
           <Col>                  
@@ -357,7 +356,7 @@ function App() {
             <Image className='subImage' src={imgSub_9}/>
           </Col>
           </Row>
-        </Container>
+        </Container> */}
 
 
         <Element id='projects' name='projects'>
@@ -434,42 +433,42 @@ function App() {
         <Element id='get_started' name='get_started'>
           <Container className='sectionContainer'>
             <Row>
-              <Col className='mainCol' style={{paddingRight:"200px"}}>
-                <h2 className='welcome'>Ready to bring your art to the NFT space?</h2>
-                <p className='welcomeParagraph'>Tell us a little about yourself and how you envision your art in the NFT space.</p>
-                
-                <div style={{ backgroundColor: "#ffffff", marginTop: "20px", padding: "40px",  border:"1px solid #C1C8E4", borderRadius: "25px"}}>
+              <Col className='mainCol'>                
                   <Row>
-                    <Col>
-                    <Form>
-                      <Form.Group className='startedForm' controlId="formBasicEmail">
-                        <Form.Label className='labelInput'>First name</Form.Label>
-                        <Form.Control className="input" type="text" />
-                      </Form.Group>
+                    <Col style={{paddingRight: '100px'}}>
+                    <h2 className='welcome'>We’ll help launch your art into the NFT space.</h2>
+                    <p className='formParagraph'>Fill out the form, and we'll reach out to get your NFT journey started! Alternatively contact us at contact@visioslabs.com.</p>
 
-                      <Form.Group className='startedForm' controlId="formBasicEmail">
-                        <Form.Label className='labelInput'>Last name</Form.Label>
-                        <Form.Control className="input" type="text" />
-                      </Form.Group>
+                      <Form>
+                        <Form.Group className='startedForm' controlId="formBasicEmail">
+                          <Form.Label className='labelInput'>First name</Form.Label>
+                          <Form.Control className="input" type="text" />
+                        </Form.Group>
 
-                      <Form.Group className='startedForm' controlId="formBasicEmail">
-                        <Form.Label className='labelInput'>Email address</Form.Label>
-                        <Form.Control className="input" type="email" />
-                      </Form.Group>
+                        <Form.Group className='startedForm' controlId="formBasicEmail">
+                          <Form.Label className='labelInput'>Last name</Form.Label>
+                          <Form.Control className="input" type="text" />
+                        </Form.Group>
 
-                      <Form.Group className='startedForm' controlId="formBasicEmail">
-                        <Form.Label className='labelInput'>Tell us about your artistic vision</Form.Label>
-                        <Form.Control className="input" type="name" />
-                      </Form.Group>
+                        <Form.Group className='startedForm' controlId="formBasicEmail">
+                          <Form.Label className='labelInput'>Email address</Form.Label>
+                          <Form.Control className="input" type="email" />
+                        </Form.Group>
 
-                      <Button style={{marginTop: "24px"}} className="startBtn" type="submit" variant="primary" size="lg">
-                        <span className="startSpan">Submit</span> 
-                      </Button>
-                    </Form>
-                    
+                        <Form.Group className='startedForm' controlId="formBasicEmail">
+                            <Form.Label className='labelInput'>Tell us about your project</Form.Label>
+                            <Form.Control className='input' as="textarea" rows={2} />
+                        </Form.Group>
+
+                        <Button style={{marginTop: "50px"}} className="startBtn" type="submit" variant="primary" size="lg">
+                          <span className="startSpan">Submit</span> 
+                        </Button>
+                      </Form>
+                    </Col>
+                    <Col style={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
+                        <Image className="rocketImage" src={imgRocket} />
                     </Col>
                   </Row>
-                </div>
               </Col>
             </Row>
           </Container>
@@ -484,18 +483,7 @@ function App() {
               <Col style={{textAlign:"start"}} >
                 <Image src={logo} className='footerImage' roundedCircle/>
               </Col>
-
-              <Col  xs={6}>
-                <a href="https://discord.gg/Td2wbJ4Meu" rel="noreferrer" target={"_blank"}>            
-                  <Image src={logo} className='footerImage' roundedCircle/>
-                </a> 
-                <a href="https://twitter.com/MasksOfEther" rel="noreferrer" target={"_blank"}>            
-                  <Image src={logo} className='footerImage' roundedCircle/>
-                </a> 
-                <a href="https://opensea.io/collection/masks-of-ether" rel="noreferrer" target={"_blank"}>            
-                  <Image src={logo} className='footerImage' roundedCircle/>
-                </a> 
-              </Col>
+            
 
               <Col className="rightTraitsCol">
                 <Row> <p className="copyrightText">Copyright © Visios Labs</p></Row>
