@@ -28,9 +28,17 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
 
 }
 
-.contentContainer {
-  margin-top: 50px;
+@media only screen and (max-width: 760px) {
+  .nav-main {
+    font-size: 24px;
+  }
+
+  .nav-image {
+    width:10vw;
+    height: 10vw;
+  }
 }
+
 
 .sectionContainer {
   margin-top: 50px;
@@ -41,10 +49,31 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
   text-align: start;
 }
 
+.thinCol {
+  max-width: 500px;
+}
+
+.mediumCol {
+  max-width: 800px;
+
+}
+
+.centerCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;}
+
 .welcome { 
   font-weight: 600;
   font-size: 48px;
-  margin-bottom: 36px;
+  margin-bottom: 50px;
+  margin-top: 36px;
+}
+
+.startH1 { 
+  font-weight: 600;
+  font-size: 48px;
+  margin-bottom: 50px;
   margin-top: 36px;
 }
 
@@ -56,11 +85,20 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
 }
 
 
-@media only screen and (max-width: 760px) { 
-  .welcome { 
-    font-size: 38px;
-  }
+.subTitleH2 {
+  font-weight: 600;
+  font-size: 28px;
+  color: black;
+  margin-top: 24px;
+}
 
+
+.startDiv {
+  background-color: #ffffff;
+  margin-top: 34px; 
+  padding: 20px;  
+  border: 1px solid #C1C8E4;
+  border-radius: 25px;
 }
 
 
@@ -70,6 +108,7 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
   border-radius: 16px;
   padding-left: 80px;
   padding-right: 80px;
+  margin-top: 24px;
 }
 
 .startSpan {
@@ -79,21 +118,63 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
 }
 
 .startImage {
-  width:550px;
+  width: 550px;
   height: 750px;
 }
 
-.visiosImage {
-  width: 160px;
-  height: 160px;
-  margin-top: 34px;
+@media only screen and (max-width: 760px) { 
+  .welcome { 
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  .startH1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+
+  }
+
+  .welcomeParagraph { 
+    font-size: 18px;
+  }
+
+  .subTitleH2 {
+    font-size: 24px;
+    margin-top: 0px;
+  }
+
+  .thinCol {
+    width: 100vw;
+  }
+
+
+  .sectionContainer {
+    margin-bottom: -50px;
+  }
+
+  .startImage {
+    margin-top: -50px;
+    width: 90vw;
+    height: calc(90vw * 75/55);
+    margin-top: 24px;
+  }
+
+  .startBtn {
+    margin-top: 12px;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .startSpan {
+    font-size: 18px;
+  }
+
 }
 
-@media only screen and (max-width: 760px) {
-  .visiosImage {
-    width: 40vw;
-    height: 40vw;
-  }
+.visionRow {
+  display: flex;
+  flex-direction: row;
 }
 
 .sideImage {
@@ -102,23 +183,24 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
   margin-top: 34px;
 }
 
+@media only screen and (max-width: 760px) {  
+  .visionRow {
+    flex-direction: column-reverse;
+  }
+
+  .sideImage {
+    width: 70vw;
+    height: 70vw;
+  }
+}
+
+
 .approachTitle {
   margin-top: 100px;
   margin-bottom: 50px;
 }
 
-.subTitleH2 {
-  font-weight: 600;
-  font-size: 28px;
-  color: black;
-  margin-top: 24px;
-}
 
-.sideIcon {
-  width: 150px;
-  height: 150px;
-  margin-top: 34px;
-}
 
 .approachImage {
   width: 500px;
@@ -126,26 +208,51 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
   margin-top: 34px;
 }
 
-.titleH2 {
-  text-align: start;
-  font-weight: 400;
-  font-size: 24px;
-  color: #8860D0;
-  margin-top: 100px;
-  margin-bottom: 20px;
-}
+@media only screen and (max-width: 760px) { 
+  .approachTitle {
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
 
-.iconParagraph {
-  font-weight: 600;
-  font-size: 20px;
-  color: black;
-  margin-top: 12px;
+  .approachImage {
+    width: 90vw;
+    height: calc(90vw * 1.5);
+    margin-top: 5px;
+
+  }
 }
 
 .subImage {
   width: 5vw;
   height: 5vw;
   margin: 4px;
+}
+
+.titleH2P {
+  text-align: start;
+  font-weight: 600;
+  font-size: 24px;
+  color: #8860D0;
+  margin-top: 100px;
+  margin-bottom: 34px;
+}
+
+.titleH2B {
+  text-align: start;
+  font-weight: 600;
+  font-size: 24px;
+  color: #5680E9;
+  margin-top: 100px;
+  margin-bottom: 34px;
+}
+
+.titleH2M {
+  text-align: start;
+  font-weight: 600;
+  font-size: 24px;
+  color: #C060D0;
+  margin-top: 100px;
+  margin-bottom: 34px;
 }
 
 .newsTitleH2 {
@@ -168,37 +275,82 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
   height: 40px;
 }
 
+.newsCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .newsImage {
   width: 400px;
   height: 400px;
 }
 
+@media only screen and (max-width: 760px) {
+  .titleH2P {
+    margin-bottom: 20px;
+  }
 
-.statH3 {
-  font-weight: 400;
-  font-size: 24px;
+  .titleH2B {
+    margin-bottom: 20px;
+  }
+
+  .titleH2M {
+    margin-bottom: 20px;
+  }
+
+  .newsTitleH2 { 
+    font-size: 21px;
+  }
+
+  .newsParagraph { 
+    font-size: 18px;
+
+  }
+
+  .newsImage {
+    width: 80vw;
+    height: 80vw;
+  }  
+}
+
+.iconParagraph {
+  font-weight: 600;
+  font-size: 20px;
   color: black;
-}
-.statParagraph {
-  font-weight: 400;
-  font-size: 16px;
-  color: #BBBBBB;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
-.statBar {
-  width: 4.8px;
-  height: 62.4px;
+.sideIcon {
+  width: 150px;
+  height: 150px;
+  margin-top: 34px;
 }
+
+@media only screen and (max-width: 760px) {
+  .iconParagraph { 
+    font-size: 18px;
+  }
+
+  .sideIcon { 
+    width: 38vw;
+    height: 38vw;
+    margin-top: 24px;
+
+  }
+}
+
 
 .featuredCol {
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .featuredImage {
   width: 550px;
   height: 300px;
-  
 }
 
 .statImage {
@@ -209,14 +361,40 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
   margin-right: 10px;
 }
 
-
 .soonParagraph {
   font-weight: 400;
   font-size: 18px;
-  color: #8860D0;
+  color: black;
   font-style: italic;
+  margin-top: 50px;
+}
+
+.featuredTitleH2 {
+  font-weight: 600;
+  font-size: 28px;
+  color: black;
   margin-top: 24px;
 }
+
+@media only screen and (max-width: 760px) { 
+  .featuredImage { 
+    width: 90vw;
+    height: calc(90vw * 300/550);
+    margin-top: 24px;
+  }
+
+  .statImage {
+    width: 30vw;
+    height: calc(30vw*0.5);
+  }
+
+  .soonParagraph { 
+    font-size: 16px;
+    margin-top: 16px;
+  }
+
+}
+
 
 .startedForm {
   margin-top: 24px;
@@ -244,6 +422,19 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
   color: #000000;
 }
 
+.formBtn {
+  background-color: #8860D0;
+  border-color: #8860D0;
+  border-radius: 16px;
+  padding-left: 80px;
+  padding-right: 80px;
+  margin-top: 50px;
+}
+
+.captcha {
+  margin-top: 50px;
+}
+
 
 .rocketImage {
   width: calc(383px * 0.8);
@@ -252,12 +443,51 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
   margin-top: 50px;
 }
 
+@media only screen and (max-width: 760px) { 
+  .formParagraph { 
+    font-size: 16px;
+  }
+
+  .labelInput {
+    font-size: 18px;
+  }
+
+  .input {
+    font-size: 18px;
+  }
+
+  .formBtn {
+    border-radius: 16px;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-top: 20px;
+  }
+
+  .rocketImage {
+    width: 50vw;
+    height: calc(50vw * 737/383);
+    margin-top: 20px;
+  }
+
+
+}
+
+.footerHr {
+  background-color: #C1C8E4;
+  margin-top: 50px;
+}
+
 .leftTraitsCol {
+  display: flex;
+  align-items: center;
   text-align: start;
 }
 
 .rightTraitsCol {
-  text-align: end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  
 }
 
 
@@ -272,6 +502,7 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
 .copyrightText {
   font-size: 14px;
 }
+
 @media only screen and (max-width: 760px) { 
   .footerImage {
     width: 8vw;
@@ -283,5 +514,8 @@ h1, h2, h3, h4, h5, h6, p, span, .input, .labelInput {font-family:"Poppins"; col
     font-size: 10px;
   }
 
+  .hrFooter {
+    margin-top: 50px;
+  }
 
 }

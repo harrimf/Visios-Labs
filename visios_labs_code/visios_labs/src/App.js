@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+
 import logo from './images/logo_visios.svg'
 import {Navbar, Nav, Button, Container, Row, Col, Image, Form} from 'react-bootstrap'
 import { Link, Element } from 'react-scroll'
@@ -46,16 +48,84 @@ import imgStat_2 from './images/stat_2_image.svg'
 import imgRocket from './images/success_rocket.svg'
 
 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 
 import './App.css';
 
-function App() {
+
+
+class App extends Component {
+
+  componentDidMount() {
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
+  }
+
+  resize() {
+    let currentHideNav = (window.innerWidth <= 760);
+    if (currentHideNav !== this.state.isMobile) {
+        this.setState({isMobile: currentHideNav});
+    }
+  }
+
+  componentWillUnmount() {
+      window.removeEventListener("resize", this.resize.bind(this));
+  }
+
+
+
+  handleFormChange = (e) => {
+    this.setState({[e.target.name]: e.target.value.trim() })
+  }
+
+  sendFeedback = (serviceID, templateId, variables) => {
+    window.emailjs.send(
+        serviceID, templateId,
+        variables
+    ).then(res => {
+        console.log('Email successfully sent!')
+    })
+        .catch(err => console.error('There has been an Error.', err))
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.setState({submitPress: true})
+    if(this.state.firstname !== "" && this.state.lastname !== "" && this.state.email !== "" && this.state.email.includes("@") && this.state.query !== "") {
+      alert(`Thank you for filling in the form. We will get back to you soon`);
+      const templateId = 'template_3e2hqyn';
+      const serviceID = "service_fj4r3tt";
+      this.sendFeedback(serviceID, templateId, { from_name: this.state.firstname.concat(" ", this.state.lastname), message: this.state.query, email: this.state.email })
+      console.log(this.state.query);
+    } else {
+      console.log("Not all fields filled in")
+    }
+  };
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      
+      firstname: "",
+      lastname: "",
+      email: "",
+      query: "",
+      submitPress: false
+
+    }
+
+    console.log("Constructor called")
+
+  }
+
+
+render() {
   return (
     <div className="App">
-     <Navbar>
+     <Navbar expand="lg">
           <Container className='mainNavbar'>
             <Navbar.Brand href="#home">
             <img
@@ -63,7 +133,7 @@ function App() {
                 src={logo}
                 width="45"
                 height="45"
-                className="d-inline-block align-top "/>{' '} <span className="nav-main">Visios Labs</span>
+                className="d-inline-block align-top nav-image"/>{' '} <span className="nav-main">Visios Labs</span>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
@@ -81,69 +151,46 @@ function App() {
                 </Nav.Link>
 
                 <Nav.Link>   
-                  <Link to="get_started" className='nav-scrolllink'>Get Started</Link>
+                  <Link to="get_started" className='nav-scrolllink'>Get started</Link>
                 </Nav.Link>  
               </Nav>
             </Navbar.Collapse>
           </Container>
       </Navbar>
 
-      <Container className='contentContainer'>
       <Element id='start' name='start'>
         <Container className='sectionContainer'>
             <Row>
-              <Col className='mainCol'>
-                <h1 className='welcome'>The artistic vision emerges in the NFT space</h1>
+              <Col className='mainCol thinCol'>
+                <h1 className='startH1'>The artistic vision emerges in the NFT space</h1>
                 <p className='welcomeParagraph'>You create the art. We do the rest.</p>
-                <p className='welcomeParagraph' style={{maxWidth:"500px",}}>Visios Labs helps artists & creators launch their NFT collections. We handle the tech so you can focus on the art & community.</p>
-                <div style={{maxWidth:"500px", backgroundColor: "#ffffff", marginTop: "36px", padding: "20px",  border:"1px solid #C1C8E4", borderRadius: "25px"}}>
+                <p className='welcomeParagraph'>Visios Labs helps artists & creators launch their NFT collections. We handle the tech so you can focus on the art & community.</p>
+                <div className='startDiv'>
                   <Row>
                     <Col>
                     <h2 className='subTitleH2'>Ready to jump into the NFT space? We're here to help.</h2>
                     <Link to="get_started" className='nav-scrolllink'>
-                      <Button style={{marginTop: "24px"}} className="startBtn" variant="primary" size="lg">
+                      <Button className="startBtn" variant="primary" size="lg">
                         <span className="startSpan">Get started</span> 
                       </Button>
                     </Link> 
                     </Col>
                   </Row>
                 </div>
-
-
               </Col>
-              <Col style={{textAlign: "center"}}>
-              <Image className="startImage" src={imgStartGraphic} />
 
-                {/* <Row>
-                  <Col>
-                  <Image className="visiosImage" src={imgStart_1} />
-                  </Col>
-                  <Col>
-                  <Image className="visiosImage" src={imgStart_2} />
-                  </Col>
-                </Row>
-                <Row className="row2">
-                  <Col>
-                  <Image className="visiosImage" src={imgStart_3} />
-                  </Col>
-                  <Col>
-                  <Image className="visiosImage" src={imgStart_4} />
-                  </Col>
-                </Row> */}
+              <Col className='centerCol'>
+                <Image className="startImage" src={imgStartGraphic} />
               </Col>
             </Row>
           </Container>
         </Element>
 
       <Element id='vision' name='vision'>
-        <Container className='sectionContainer'>
-            <Row>
-              <Col>
-                <Row>
-                  <Col>
-                  <Image className="sideImage" src={imgCollection} />
-                  </Col>
-                </Row>
+        <Container className='sectionContainer '>
+            <Row className='visionRow'>
+              <Col className='centerCol'>
+                <Image className="sideImage" src={imgCollection} />
               </Col>
               <Col className='mainCol'>
                 <h1 className='welcome'>Your NFT collection. We build it.</h1>
@@ -152,7 +199,7 @@ function App() {
               </Col>
             </Row>
           </Container>
-        </Element>
+      </Element>
 
         <Element id='approach' name='approach'>
         <Container className='sectionContainer'>
@@ -167,23 +214,8 @@ function App() {
                 <p className='welcomeParagraph' >Anything that we make is 100% owned by the artists & creators. We build it, you own it.</p>
 
               </Col>
-              <Col>
-              <Image className="approachImage" src={imgApproach} />
-                {/* <Row>
-                  <Col>
-                  <Image className="sideIcon" src={imgTech} />
-                  </Col>
-                </Row>
-                <Row className="row2">
-                  <Col>
-                  <Image className="sideIcon" src={imgGuidance} />
-                  </Col>
-                </Row>
-                <Row className="row2">
-                  <Col>
-                  <Image className="sideIcon" src={imgOwnership} />
-                  </Col>
-                </Row> */}
+              <Col className='centerCol'>
+                <Image className="approachImage" src={imgApproach} />
               </Col>
             </Row>
           </Container>
@@ -228,60 +260,56 @@ function App() {
         
         <Element styleid='news' name='news'>
         <Container className='sectionContainer'>
-        <h2 className='titleH2'>In the news</h2>
+        <h2 className='titleH2M'>In the news</h2>
             <Row>
-              <Col className="mainCol">
-                <div style={{maxWidth: '800px'}}>
-                  <h2 className='newsTitleH2' >Named one of 50 world's most innovative companies and no.1 gaming company of 2022</h2>
-                  <Row style={{alignItems: 'center'}}>
+              <Col className="mainCol mediumCol">
+                <div>
+                  <h2 className='newsTitleH2'>Named one of 50 world's most innovative companies and no.1 gaming company of 2022</h2>
+                  <Row>
                     {/* <Col md="auto">
                       <Image className="newsBar" src={imgNewsBarPurple}/>
                     </Col> */}
                     <Col>
-                    <p className='newsParagraph' >Business Insider</p>
+                      <p className='newsParagraph'>Business Insider</p>
                     </Col>
                   </Row>
                 </div>
                 <div>
-                  <h2 className='newsTitleH2' >“This is an entirely new way to own something.”</h2>
-                  <Row style={{alignItems: 'center'}}>
+                  <h2 className='newsTitleH2'>“This is an entirely new way to own something.”</h2>
+                  <Row>
                     {/* <Col md="auto">
                       <Image className="newsBar" src={imgNewsBarPurple}/>
                     </Col> */}
                     <Col>
-                    <p className='newsParagraph' >Crypto News</p>
+                      <p className='newsParagraph'>Crypto News</p>
                     </Col>
                   </Row>
                 </div>
                 <div>
-                  <h2 className='newsTitleH2' >“A cultural phenomenon”</h2>
-                  <Row style={{alignItems: 'center'}}>
+                  <h2 className='newsTitleH2'>“A cultural phenomenon”</h2>
+                  <Row>
                     {/* <Col md="auto">
                       <Image className="newsBar" src={imgNewsBarPurple}/>
                     </Col> */}
                     <Col>
-                    <p className='newsParagraph' >Wall Street Journal</p>
+                      <p className='newsParagraph'>Wall Street Journal</p>
                     </Col>
                   </Row>
                 </div>
                 <div>
-                  <h2 className='newsTitleH2' >“The most used contract in blockchain”</h2>
-                  <Row style={{alignItems: 'center'}}>
+                  <h2 className='newsTitleH2'>“The most used contract in blockchain”</h2>
+                  <Row>
                     {/* <Col md="auto">
                       <Image className="newsBar" src={imgNewsBarPurple}/>
                     </Col> */}
                     <Col>
-                    <p className='newsParagraph' >Forbes</p>
+                      <p className='newsParagraph' >Forbes</p>
                     </Col>
                   </Row>
                 </div>
               </Col>
-              <Col style={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
-                <Row >
-                  <Col>
-                    <Image className="newsImage" src={imgNews} />
-                  </Col>
-                </Row>
+              <Col className='newsCol'>
+                <Image className="newsImage" src={imgNews} />
               </Col>
             </Row>
           </Container>
@@ -289,9 +317,9 @@ function App() {
 
         <Element id='services' name='services'>
         <Container className='sectionContainer'>
+        <h2 className='titleH2B'>Tasks we take care of</h2>
             <Row>
               <Col className='mainCol'>
-                <h2 className='titleH2'>Tasks we take care of:</h2>
                 <Row>
                   <Col>
                     <Image className="sideIcon" src={imgArtwork} />
@@ -300,113 +328,46 @@ function App() {
                   <Col>
                     <Image className="sideIcon" src={imgSmartContract}/>
                     <p className='iconParagraph'>Smart <br></br>Contracts</p>
-
                   </Col>
                   <Col>
                     <Image className="sideIcon" src={imgAsset} />
                     <p className='iconParagraph'>Asset <br></br>Deployment</p>
-
                   </Col>
                   <Col>
                     <Image className="sideIcon" src={imgWebsite} />
                     <p className='iconParagraph'>Website <br></br>Development</p>
-
                   </Col>
                   <Col>
                     <Image className="sideIcon" src={imgSupport} />
                     <p className='iconParagraph'>Continuous <br></br>Support</p>
-
                   </Col>
                 </Row>
               </Col>
             </Row>
           </Container>
         </Element>
-{/* 
-        <Container style={{marginTop: '100px', marginBottom: '50px'}}>
-          <Row>
-          <Col>                  
-            <Image className='subImage' src={imgSub_3}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_10}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_5}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_6}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_7}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_4}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_2}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_1}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_8}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_9}/>
-          </Col>
-          </Row>
-        </Container> */}
-
 
         <Element id='projects' name='projects'>
         <Container className='sectionContainer'>
-        <h2 className='titleH2'>Our projects</h2>
+        <h2 className='titleH2M' >Our projects</h2>
 
-            <Row style={{marginTop: '80px'}}>
-              <Col className="featuredCol" style={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
-                  <Image className="featuredImage" src={imgFeatured_1} />
-             </Col>
+            <Row>
+              <Col className="featuredCol">
+                <Image className="featuredImage" src={imgFeatured_1} />
+              </Col>
               <Col className='mainCol'>
+                <h2 className='featuredTitleH2'>Masks of Ether</h2>
+                <p className='welcomeParagraph'>A collection of generative masks inspired by West-African tribal art. Aiming to share rich African culture in the NFT space.</p>
                 <Row>
                   <Col>
-                    <h2 className='subTitleH2'>Masks of Ether</h2>
-                    <p className='welcomeParagraph'>A collection of generative masks inspired by West-African tribal art. Aiming to share rich African culture in the NFT space.</p>
-                    <Row>
-                      <Col>
-                        <Image className="statImage" src={imgStat_1} />
-                        <Image className="statImage" src={imgStat_2} />
+                    <Image className="statImage" src={imgStat_1} />
+                    <Image className="statImage" src={imgStat_2} />
 
-                      </Col>
-                    </Row>
-                    {/* <Row>
-                      <Col md="auto">
-                        <Image className="statBar" src={imgBarRed}/>
-                      </Col>
-                      <Col>
-                        <div>
-                          <h2 className='statH3'>$50k+</h2>
-                          <p className='statParagraph'>in transactions</p>
-                        </div>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md="auto">
-                        <Image className="statBar" src={imgBarPurple}/>
-                      </Col>
-                      <Col>
-                        <div>
-                          <h2 className='statH3'>100+</h2>
-                          <p className='statParagraph'>news mentions</p>
-                        </div>
-                      </Col>
-                    </Row> */}
                   </Col>
-                  
                 </Row>
               </Col>
             </Row>
-            <p className='soonParagraph' style={{marginTop: '50px'}}>Stay tuned for our newest projects!</p>
+              <p className='soonParagraph'>Stay tuned for our newest projects!</p>
           </Container>
         </Element>
 
@@ -435,37 +396,58 @@ function App() {
             <Row>
               <Col className='mainCol'>                
                   <Row>
-                    <Col style={{paddingRight: '100px'}}>
+                    <Col className="mediumCol">
                     <h2 className='welcome'>We’ll help launch your art into the NFT space.</h2>
-                    <p className='formParagraph'>Fill out the form, and we'll reach out to get your NFT journey started! Alternatively contact us at contact@visioslabs.com.</p>
+                    <p className='formParagraph'>Fill out the form, and we'll reach out to get your NFT journey started! Or reach us at: contact@visioslabs.com.</p>
 
                       <Form>
                         <Form.Group className='startedForm' controlId="formBasicEmail">
                           <Form.Label className='labelInput'>First name</Form.Label>
-                          <Form.Control className="input" type="text" />
+                          <Form.Control className="input" name="firstname" type="name" isInvalid={this.state.firstname === "" && this.state.submitPress} onChange={(e) => { this.handleFormChange(e)}}/>
+                          <Form.Control.Feedback type='invalid'>
+                              This field cannot be empty
+                          </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group className='startedForm' controlId="formBasicEmail">
                           <Form.Label className='labelInput'>Last name</Form.Label>
-                          <Form.Control className="input" type="text" />
+                          <Form.Control className="input" name="lastname" type="name" isInvalid={this.state.lastname === "" && this.state.submitPress} onChange={(e) => { this.handleFormChange(e)}}/>
+                          <Form.Control.Feedback type='invalid'>
+                              This field cannot be empty
+                          </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group className='startedForm' controlId="formBasicEmail">
                           <Form.Label className='labelInput'>Email address</Form.Label>
-                          <Form.Control className="input" type="email" />
+                          <Form.Control className="input" name="email" type="email" isInvalid={(this.state.email === "" || !this.state.email.includes("@")) && this.state.submitPress} onChange={(e) => { this.handleFormChange(e)}}/>
+                          <Form.Control.Feedback type='invalid'>
+                            {this.state.email === "" ? "This field cannot be empty" : "Please enter a valid email"}
+                              
+                          </Form.Control.Feedback>
                         </Form.Group>
 
                         <Form.Group className='startedForm' controlId="formBasicEmail">
                             <Form.Label className='labelInput'>Tell us about your project</Form.Label>
-                            <Form.Control className='input' as="textarea" rows={2} />
+                            <Form.Control className='input' name="query" as="textarea" rows={2} isInvalid ={this.state.query === "" && this.state.submitPress}onChange={(e) => { this.handleFormChange(e)}}/>
+                            <Form.Control.Feedback type='invalid'>
+                                This field cannot be empty
+                            </Form.Control.Feedback>
                         </Form.Group>
 
-                        <Button style={{marginTop: "50px"}} className="startBtn" type="submit" variant="primary" size="lg">
-                          <span className="startSpan">Submit</span> 
-                        </Button>
+                        <Row>
+                          <Col className="mainCol">
+                            <Button className="formBtn" type="submit" variant="primary" size="lg" onClick={(e) => {this.handleSubmit(e)}}>
+                              <span className="startSpan">Submit</span> 
+                            </Button>
+                          </Col>
+                          {/* <Col>
+                            <ReCAPTCHA className="captcha" sitekey="6Ld2VKofAAAAACTDV3SjzukLm_Yc7M5jYy6ChkWB" onChange={onChange}/>
+                          </Col> */}
+                        </Row>
+                        
                       </Form>
                     </Col>
-                    <Col style={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
+                    <Col className='featuredCol'>
                         <Image className="rocketImage" src={imgRocket} />
                     </Col>
                   </Row>
@@ -474,13 +456,11 @@ function App() {
           </Container>
         </Element>
 
-        </Container>
-
-        <hr style={{backgroundColor: "#C1C8E4"}}></hr>
+        <hr className="hrFooter" style={{backgroundColor: "#C1C8E4"}}></hr>
         <footer>
           <Container>
             <Row>
-              <Col style={{textAlign:"start"}} >
+              <Col className='leftTraitsCol' >
                 <Image src={logo} className='footerImage' roundedCircle/>
               </Col>
             
@@ -494,6 +474,7 @@ function App() {
         </footer>   
     </div>
   );
+}
 }
 
 export default App;
