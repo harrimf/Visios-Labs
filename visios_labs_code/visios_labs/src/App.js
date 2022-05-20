@@ -129,7 +129,7 @@ render() {
           <Container className='mainNavbar'>
             <Navbar.Brand href="#home">
             <img
-                alt=""
+                alt="visios labs logo"
                 src={logo}
                 width="45"
                 height="45"
@@ -147,7 +147,7 @@ render() {
                 </Nav.Link> 
 
                 <Nav.Link> 
-                  <Link to="approach" className='nav-scrolllink'>Projects</Link>
+                  <Link to="projects" className='nav-scrolllink'>Projects</Link>
                 </Nav.Link>
 
                 <Nav.Link>   
@@ -160,37 +160,37 @@ render() {
 
       <Element id='start' name='start'>
         <Container className='sectionContainer'>
-            <Row>
-              <Col className='mainCol thinCol'>
-                <h1 className='startH1'>The artistic vision emerges in the NFT space</h1>
-                <p className='welcomeParagraph'>You create the art. We do the rest.</p>
-                <p className='welcomeParagraph'>Visios Labs helps artists & creators launch their NFT collections. We handle the tech so you can focus on the art & community.</p>
-                <div className='startDiv'>
-                  <Row>
-                    <Col>
-                    <h2 className='subTitleH2'>Ready to jump into the NFT space? We're here to help.</h2>
-                    <Link to="get_started" className='nav-scrolllink'>
-                      <Button className="startBtn" variant="primary" size="lg">
-                        <span className="startSpan">Get started</span> 
-                      </Button>
-                    </Link> 
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
+          <Row>
+            <Col className='mainCol thinCol'>
+              <h1 className='startH1'>The artistic vision emerges in the NFT space</h1>
+              <p className='welcomeParagraph'>You create the art. We do the rest.</p>
+              <p className='welcomeParagraph'>Visios Labs helps artists & creators launch their NFT collections. We handle the tech so you can focus on the art & community.</p>
+              <div className='startDiv'>
+                <Row>
+                  <Col>
+                  <h2 className='subTitleH2'>Ready to jump into the NFT space? We're here to help.</h2>
+                  <Link to="get_started" className='nav-scrolllink'>
+                    <Button className="startBtn" variant="primary" size="lg">
+                      <span className="startSpan">Get started</span> 
+                    </Button>
+                  </Link> 
+                  </Col>
+                </Row>
+              </div>
+            </Col>
 
-              <Col className='centerCol'>
-                <Image className="startImage" src={imgStartGraphic} />
-              </Col>
-            </Row>
-          </Container>
-        </Element>
+            <Col className='centerCol'>
+              <Image alt='A new dawn in NFT' className="startImage" src={imgStartGraphic} />
+            </Col>
+          </Row>
+        </Container>
+      </Element>
 
       <Element id='vision' name='vision'>
         <Container className='sectionContainer '>
             <Row className='visionRow'>
               <Col className='centerCol'>
-                <Image className="sideImage" src={imgCollection} />
+                <Image alt='NFT collections for artists' className="sideImage" src={imgCollection} />
               </Col>
               <Col className='mainCol'>
                 <h1 className='welcome'>Your NFT collection. We build it.</h1>
@@ -215,7 +215,7 @@ render() {
 
               </Col>
               <Col className='centerCol'>
-                <Image className="approachImage" src={imgApproach} />
+                <Image alt='We handle NFT tech, your NFT vision & you own the NFT' className="approachImage" src={imgApproach} />
               </Col>
             </Row>
           </Container>
@@ -309,7 +309,7 @@ render() {
                 </div>
               </Col>
               <Col className='newsCol'>
-                <Image className="newsImage" src={imgNews} />
+                <Image alt='NFT news coverage' className="newsImage" src={imgNews} />
               </Col>
             </Row>
           </Container>
@@ -322,23 +322,23 @@ render() {
               <Col className='mainCol'>
                 <Row>
                   <Col>
-                    <Image className="sideIcon" src={imgArtwork} />
+                    <Image alt='NFT artwork generation' className="sideIcon" src={imgArtwork} />
                     <p className='iconParagraph'>Artwork <br></br>Generation</p>
                   </Col>
                   <Col>
-                    <Image className="sideIcon" src={imgSmartContract}/>
+                    <Image alt='NFT smart contracts' className="sideIcon" src={imgSmartContract}/>
                     <p className='iconParagraph'>Smart <br></br>Contracts</p>
                   </Col>
                   <Col>
-                    <Image className="sideIcon" src={imgAsset} />
+                    <Image alt='NFT asset deployment' className="sideIcon" src={imgAsset} />
                     <p className='iconParagraph'>Asset <br></br>Deployment</p>
                   </Col>
                   <Col>
-                    <Image className="sideIcon" src={imgWebsite} />
+                    <Image alt='NFT mint site' className="sideIcon" src={imgWebsite} />
                     <p className='iconParagraph'>Website <br></br>Development</p>
                   </Col>
                   <Col>
-                    <Image className="sideIcon" src={imgSupport} />
+                    <Image alt='support with NFT collection' className="sideIcon" src={imgSupport} />
                     <p className='iconParagraph'>Continuous <br></br>Support</p>
                   </Col>
                 </Row>
@@ -353,15 +353,15 @@ render() {
 
             <Row>
               <Col className="featuredCol">
-                <Image className="featuredImage" src={imgFeatured_1} />
+                <Image alt='masks of ether' className="featuredImage" src={imgFeatured_1} />
               </Col>
               <Col className='mainCol'>
                 <h2 className='featuredTitleH2'>Masks of Ether</h2>
                 <p className='welcomeParagraph'>A collection of generative masks inspired by West-African tribal art. Aiming to share rich African culture in the NFT space.</p>
                 <Row>
                   <Col>
-                    <Image className="statImage" src={imgStat_1} />
-                    <Image className="statImage" src={imgStat_2} />
+                    <Image alt='nft transaction volume' className="statImage" src={imgStat_1} />
+                    <Image alt='news coverage' className="statImage" src={imgStat_2} />
 
                   </Col>
                 </Row>
@@ -448,7 +448,7 @@ render() {
                       </Form>
                     </Col>
                     <Col className='featuredCol'>
-                        <Image className="rocketImage" src={imgRocket} />
+                        <Image  alt='launch nft collection' className="rocketImage" src={imgRocket} />
                     </Col>
                   </Row>
               </Col>
@@ -461,7 +461,7 @@ render() {
           <Container>
             <Row>
               <Col className='leftTraitsCol' >
-                <Image src={logo} className='footerImage' roundedCircle/>
+                <Image alt='visios labs logo' src={logo} className='footerImage' roundedCircle/>
               </Col>
             
 
