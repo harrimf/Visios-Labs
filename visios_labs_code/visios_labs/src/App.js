@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
-import logo from './images/logo_visios.svg'
-import {Navbar, Nav, Button, Container, Row, Col, Image, Form} from 'react-bootstrap'
+import logo from './images/v2/visios_labs_logo.svg'
+import logoWhite from './images/v2/visios_labs_logo_white.svg'
+import {Navbar, Nav, Button, Container, Row, Col, Image, Accordion, Form} from 'react-bootstrap'
 import { Link, Element } from 'react-scroll'
+import { Link as RouterLink} from "react-router-dom";
+import NumberFormat from 'react-number-format';
+
 
 import imgStart_1 from './images/star_square.svg'
 import imgStart_2 from './images/triangle_square.svg'
@@ -30,7 +34,6 @@ import imgSub_8 from './images/icon_circle_purple.svg'
 import imgSub_9 from './images/icon_star_magenta.svg'
 import imgSub_10 from './images/icon_circle_orange.svg'
 
-
 import imgNews from './images/news_side_image.svg'
 
 import imgSmartContract from './images/smart_contract_icon_alt.svg'
@@ -47,6 +50,67 @@ import imgStat_2 from './images/stat_2_image.svg'
 
 import imgRocket from './images/success_rocket.svg'
 
+import imgTitleArt from './images/v2/art_title.png'
+import imgTitleCode from './images/v2/code_title.png'
+import imgTitleUpload from './images/v2/upload_title.png'
+import imgTitleWebsite from './images/v2/website_title.png'
+import imgTitleLaunch from './images/v2/launch_title.png'
+import imgTitleDao from './images/v2/dao_title.png'
+
+import imgTitleApe from './images/v2/ape_title.png'
+import imgTitleMask from './images/v2/mask_title.png'
+import imgTitlePet from './images/v2/pet_title.png'
+import imgTitleMeka from './images/v2/meka_title.png'
+
+import imgBrandYahoo from './images/v2/brand_yahoo.svg'
+import imgBrandMarketWatch from './images/v2/brand_marketwatch.svg'
+import imgBrandArtBasel from './images/v2/brand_art_basel.svg'
+import imgBrandBenzinga from './images/v2/brand_benzinga.svg'
+import imgBrandCoinMarketcap from './images/v2/brand_coinmarketcap.svg'
+import imgBrandFox from './images/v2/brand_fox.svg'
+import imgBrandMorningstar from './images/v2/brand_morningstar.svg'
+import imgBrandNFTRadar from './images/v2/brand_nftradar.svg'
+
+import imgBrandYahooBlack from './images/v2/brand_yahoo_black.svg'
+import imgBrandFoxBlack from './images/v2/brand_fox_black.svg'
+import imgBrandArtBaselBlack from './images/v2/brand_art_basel_black.svg'
+import imgBrandNFTRadarBlack from './images/v2/brand_nftradar_black.svg'
+
+import imgValuePick from './images/v2/pick_value.gif'
+import imgValueCalendar from './images/v2/calendar_value.gif'
+import imgValueRevise from './images/v2/revise_value.gif'
+
+import imgValueCirclePurple from './images/v2/purple_circle_value.svg'
+import imgValueCircleBlue from './images/v2/blue_circle_value.svg'
+
+
+
+import imgValueQuote from './images/v2/quote_value.svg'
+
+import imgApproachMatt from './images/v2/matt_approach.svg'
+
+import imgServicesArt from './images/v2/art_services.gif'
+import imgServicesCode from './images/v2/code_services.gif'
+import imgServicesDao from './images/v2/dao_services.gif'
+import imgServicesLaunch from './images/v2/launch_services.gif'
+import imgServicesUpload from './images/v2/upload_services.gif'
+import imgServicesWebsite from './images/v2/website_services.gif'
+
+import imgServicesIcon1 from './images/v2/purple_icon_services.svg'
+import imgServicesIcon2 from './images/v2/yellow_icon_services.svg'
+import imgServicesIcon3 from './images/v2/blue_icon_services.svg'
+import imgServicesIcon4 from './images/v2/orange_icon_services.svg'
+
+
+
+import imgProjectsMask1 from './images/v2/mask_1_lgs.svg'
+import imgProjectsMask2 from './images/v2/mask_2_lgs.svg'
+import imgProjectsMask3 from './images/v2/mask_3_lgs.svg'
+import imgProjectsMask4 from './images/v2/mask_4_lgs.svg'
+import imgProjectsMask5 from './images/v2/mask_5_lgs.svg'
+import imgProjectsMask6 from './images/v2/mask_6_lgs.svg'
+import imgProjectsMask7 from './images/v2/mask_7_lgs.svg'
+import imgProjectsMask8 from './images/v2/mask_8_lgs.svg'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -76,45 +140,74 @@ class App extends Component {
   }
 
 
-
-  handleFormChange = (e) => {
-    this.setState({[e.target.name]: e.target.value.trim() })
-  }
-
-  sendFeedback = (serviceID, templateId, variables) => {
-    window.emailjs.send(
-        serviceID, templateId,
-        variables
-    ).then(res => {
-        console.log('Email successfully sent!')
-    })
-        .catch(err => console.error('There has been an Error.', err))
-  }
-
-  handleSubmit = (e) => {
+  handleSelect = (e) => {
     e.preventDefault()
-    this.setState({submitPress: true})
-    if(this.state.firstname !== "" && this.state.lastname !== "" && this.state.email !== "" && this.state.email.includes("@") && this.state.query !== "") {
-      alert(`Thank you for filling in the form. We will get back to you soon`);
-      const templateId = 'template_3e2hqyn';
-      const serviceID = "service_fj4r3tt";
-      this.sendFeedback(serviceID, templateId, { from_name: this.state.firstname.concat(" ", this.state.lastname), message: this.state.query, email: this.state.email })
-      console.log(this.state.query);
-    } else {
-      console.log("Not all fields filled in")
+
+    switch(e.target.name) {
+      case 'artwork':
+        this.setState(prevState => (
+          {artworkBool: !prevState.artworkBool}));
+        break;
+      case 'code':
+        this.setState(prevState => ({
+          codeBool: !prevState.codeBool
+        }));
+        break;
+      case 'deploy':
+        this.setState(prevState => ({
+          deployBool: !prevState.deployBool
+        }));
+        break;
+      case 'website':
+        this.setState(prevState => ({
+          websiteBool: !prevState.websiteBool
+        }));        
+        break;
+      case 'support':
+        this.setState(prevState => ({
+          supportBool: !prevState.supportBool
+        }));   
+        break;
+      case 'dao':
+        this.setState(prevState => ({
+          daoBool: !prevState.daoBool
+        }));   
+        break;
+      default:
+        break;
     }
   };
+
+  calcPrice = () => {
+
+    var price = 0
+    price += this.state.artworkBool ? this.state.artworkPrice : 0
+    price += this.state.codeBool ? this.state.codePrice : 0
+    price += this.state.deployBool ? this.state.deployPrice : 0
+    price += this.state.websiteBool ? this.state.websitePrice : 0
+    price += this.state.supportBool ? this.state.supportPrice : 0
+    price += this.state.daoBool ? this.state.daoPrice : 0
+
+    return price
+
+  }
 
   constructor(props) {
     super(props)
     this.state = {
-      
-      firstname: "",
-      lastname: "",
-      email: "",
-      query: "",
-      submitPress: false
-
+      artworkBool: false,
+      codeBool: false,
+      deployBool: false,
+      websiteBool: false,
+      supportBool: false,
+      daoBool: false,
+      artworkPrice: 2995,
+      codePrice: 2995,
+      deployPrice: 995,
+      websitePrice: 2995,
+      supportPrice: 995,
+      daoPrice: 6995,
+      finalPrice: 0
     }
 
     console.log("Constructor called")
@@ -125,40 +218,49 @@ class App extends Component {
 render() {
   return (
     <div className="App">
-     <Navbar expand="lg">
-          <Container className='mainNavbar'>
-            <Navbar.Brand href="#home">
-            <img
-                alt="visios labs logo"
-                src={logo}
-                width="45"
-                height="45"
-                className="d-inline-block align-top nav-image"/>{' '} <span className="nav-main">Visios Labs</span>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ms-auto">
-                <Nav.Link >
-                  <Link to="vision" className='nav-scrolllink'>Vision</Link> 
-                </Nav.Link>   
-                
-                <Nav.Link>
-                  <Link to="approach" className='nav-scrolllink'>Approach</Link>
-                </Nav.Link> 
 
-                <Nav.Link> 
-                  <Link to="projects" className='nav-scrolllink'>Projects</Link>
-                </Nav.Link>
+      <div className="mainNavbarAlt">
+        <Container className="navContainerAlt">
+          <Row>
+            <Col>
+              <Image alt='Visios Labs logo' className="mainLogoAlt" src={logo} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
 
-                <Nav.Link>   
-                  <Link to="get_started" className='nav-scrolllink'>Get started</Link>
-                </Nav.Link>  
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
+      <Navbar expand="lg navbar">
+        <Container className='mainNavbar'>
+          <Navbar.Brand href="#home">
+          <Image
+              alt="visios labs logo"
+              src={logo}
+              className="mainLogo" />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link >
+                <Link to="value" className='nav-scrolllink'>Benefits</Link> 
+              </Nav.Link>   
+              
+              <Nav.Link>
+                <Link to="services" className='nav-scrolllink'>Services</Link>
+              </Nav.Link> 
+
+              <Nav.Link> 
+                <Link to="pricing" className='nav-scrolllink'>Pricing</Link>
+              </Nav.Link>
+
+              <Nav.Link>   
+                <Link to="faq" className='nav-scrolllink'>FAQ</Link>
+              </Nav.Link>  
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
       </Navbar>
 
-      <Element id='start' name='start'>
+      {/* <Element id='start' name='start'>
         <Container className='sectionContainer'>
           <Row>
             <Col className='mainCol thinCol'>
@@ -184,289 +286,608 @@ render() {
             </Col>
           </Row>
         </Container>
-      </Element>
+      </Element> */}
 
-      <Element id='vision' name='vision'>
-        <Container className='sectionContainer '>
-            <Row className='visionRow'>
-              <Col className='centerCol'>
-                <Image alt='NFT collections for artists' className="sideImage" src={imgCollection} />
-              </Col>
-              <Col className='mainCol'>
-                <h1 className='welcome'>Your NFT collection. We build it.</h1>
-                <p className='welcomeParagraph'>NFT’s have ushered in a digital revolution. Art has fused with the internet, people can truly own digital art with NFT’s.</p>
-                <p className='welcomeParagraph'>Artists & creators need access to NFT’s; not just coders and industry insiders. We remove the technical barrier of launching NFT collections. So artists & creators just focus on their craft.</p>
-              </Col>
-            </Row>
-          </Container>
-      </Element>
-
-        <Element id='approach' name='approach'>
-        <Container className='sectionContainer'>
-            <Row>
-              <Col className='mainCol'>
-                <h1 className='welcome approachTitle'>Our approach</h1>
-                <h2 className='subTitleH2'>Tech is on us</h2>
-                <p className='welcomeParagraph'>We deploy smart contracts, launch the mint page, and decentrally store assets for your NFT collection.</p>
-                <h2 className='subTitleH2'>Your vision, our guidance</h2>
-                <p className='welcomeParagraph'>We work closely with artists & creators to execute their vision. We guide you through the creation and launch of your NFT collection.</p>
-                <h2 className='subTitleH2' >Artist ownership</h2>
-                <p className='welcomeParagraph' >Anything that we make is 100% owned by the artists & creators. We build it, you own it.</p>
-
-              </Col>
-              <Col className='centerCol'>
-                <Image alt='We handle NFT tech, your NFT vision & you own the NFT' className="approachImage" src={imgApproach} />
-              </Col>
-            </Row>
-          </Container>
-        </Element>
-
-        
-        {/* <Container style={{marginTop: '100px', marginBottom: '50px'}}>
-          <Row>
-          <Col>                  
-            <Image className='subImage' src={imgSub_1}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_2}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_3}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_4}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_5}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_6}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_7}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_8}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_9}/>
-          </Col>
-          <Col>                  
-            <Image className='subImage' src={imgSub_10}/>
-          </Col>
-          </Row>
-        </Container> */}
-
-        
-        <Element styleid='news' name='news'>
-        <Container className='sectionContainer'>
-        <h2 className='titleH2M'>In the news</h2>
-            <Row>
-              <Col className="mainCol mediumCol">
-                <div>
-                  <h2 className='newsTitleH2'>Named one of 50 world's most innovative companies and no.1 gaming company of 2022</h2>
-                  <Row>
-                    {/* <Col md="auto">
-                      <Image className="newsBar" src={imgNewsBarPurple}/>
-                    </Col> */}
-                    <Col>
-                      <p className='newsParagraph'>Business Insider</p>
-                    </Col>
-                  </Row>
-                </div>
-                <div>
-                  <h2 className='newsTitleH2'>“This is an entirely new way to own something.”</h2>
-                  <Row>
-                    {/* <Col md="auto">
-                      <Image className="newsBar" src={imgNewsBarPurple}/>
-                    </Col> */}
-                    <Col>
-                      <p className='newsParagraph'>Crypto News</p>
-                    </Col>
-                  </Row>
-                </div>
-                <div>
-                  <h2 className='newsTitleH2'>“A cultural phenomenon”</h2>
-                  <Row>
-                    {/* <Col md="auto">
-                      <Image className="newsBar" src={imgNewsBarPurple}/>
-                    </Col> */}
-                    <Col>
-                      <p className='newsParagraph'>Wall Street Journal</p>
-                    </Col>
-                  </Row>
-                </div>
-                <div>
-                  <h2 className='newsTitleH2'>“The most used contract in blockchain”</h2>
-                  <Row>
-                    {/* <Col md="auto">
-                      <Image className="newsBar" src={imgNewsBarPurple}/>
-                    </Col> */}
-                    <Col>
-                      <p className='newsParagraph' >Forbes</p>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-              <Col className='newsCol'>
-                <Image alt='NFT news coverage' className="newsImage" src={imgNews} />
-              </Col>
-            </Row>
-          </Container>
-        </Element>
-
-        <Element id='services' name='services'>
-        <Container className='sectionContainer'>
-        <h2 className='titleH2B'>Tasks we take care of</h2>
-            <Row>
-              <Col className='mainCol'>
-                <Row>
-                  <Col>
-                    <Image alt='NFT artwork generation' className="sideIcon" src={imgArtwork} />
-                    <p className='iconParagraph'>Artwork <br></br>Generation</p>
-                  </Col>
-                  <Col>
-                    <Image alt='NFT smart contracts' className="sideIcon" src={imgSmartContract}/>
-                    <p className='iconParagraph'>Smart <br></br>Contracts</p>
-                  </Col>
-                  <Col>
-                    <Image alt='NFT asset deployment' className="sideIcon" src={imgAsset} />
-                    <p className='iconParagraph'>Asset <br></br>Deployment</p>
-                  </Col>
-                  <Col>
-                    <Image alt='NFT mint site' className="sideIcon" src={imgWebsite} />
-                    <p className='iconParagraph'>Website <br></br>Development</p>
-                  </Col>
-                  <Col>
-                    <Image alt='support with NFT collection' className="sideIcon" src={imgSupport} />
-                    <p className='iconParagraph'>Continuous <br></br>Support</p>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </Container>
-        </Element>
-
-        <Element id='projects' name='projects'>
-        <Container className='sectionContainer'>
-        <h2 className='titleH2M' >Our projects</h2>
-
-            <Row>
-              <Col className="featuredCol">
-                <Image alt='masks of ether' className="featuredImage" src={imgFeatured_1} />
-              </Col>
-              <Col className='mainCol'>
-                <h2 className='featuredTitleH2'>Masks of Ether</h2>
-                <p className='welcomeParagraph'>A collection of generative masks inspired by West-African tribal art. Aiming to share rich African culture in the NFT space.</p>
-                <Row>
-                  <Col>
-                    <Image alt='nft transaction volume' className="statImage" src={imgStat_1} />
-                    <Image alt='news coverage' className="statImage" src={imgStat_2} />
-
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-              <p className='soonParagraph'>Stay tuned for our newest projects!</p>
-          </Container>
-        </Element>
-
-        {/* <Element id='get_started' name='get_started'>
+      <Element id='title' name='title' className='title section'>
         <Container>
-            <Row>
-              <Col className='mainCol'>
-              <h2 className='titleH2'>Get started</h2>
-                <div style={{maxWidth:"800px", backgroundColor: "#ffffff", marginTop: "20px", padding: "20px",  border:"1px solid #C1C8E4", borderRadius: "25px"}}>
-                  <Row>
-                    <Col>
-                    <h2 className='subTitleH2'>Visios Labs brings creative visions to life in the NFT space</h2>
-                    <Button style={{marginTop: "24px"}} className="startBtn" variant="primary" size="lg">
-                      <span className="startSpan">Get in touch</span> 
-                    </Button>
-                    </Col>
-                  </Row>
+          <Row>
+            <Col className='titleImgCol'>
+              <Row>              
+                <Image alt='NFT artwork creation' className="titleServiceImg" src={imgTitleArt} />
+              </Row>
+              <Row>              
+                <Image alt='Coding NFT smart contracts' className="titleServiceImg" src={imgTitleCode} />
+              </Row>
+              <Row>              
+                <Image alt='Uploading NFT assets' className="titleServiceImg" src={imgTitleUpload} />
+              </Row>
+            </Col>
+
+            <Col className="titleCol">
+              <h1 className='titleH1'>The world's first NFT agency</h1>
+              <p className='titleP'>We build an NFT collection. <b>You own it.</b></p>
+              <Link to="pricing" className='nav-scrolllink'>
+                <button className="titleBtn" variant="primary" size="lg">
+                  <span className="titleSpan">Get started</span> 
+                </button>
+              </Link> 
+            </Col>
+
+            <Col className='titleImgCol'>
+              <Row>              
+                <Image alt='NFT minting website creation' className="titleServiceImg" src={imgTitleWebsite} />
+              </Row>
+              <Row>              
+                <Image alt='NFT drop launch support' className="titleServiceImg" src={imgTitleLaunch} />
+              </Row>
+              <Row>              
+                <Image alt='NFT DAO creation' className="titleServiceImg" src={imgTitleDao} />
+              </Row>
+            </Col>
+          </Row>
+
+          <Row className="titleNFTRow">
+            <Col>
+              <Image alt='NFT Ape' className="titleNFTImg" src={imgTitleApe} />
+            </Col>
+            <Col>
+              <Image alt='NFT Mask' className="titleNFTImg" src={imgTitleMask} />
+            </Col>
+            <Col>
+              <Image alt='NFT Pet' className="titleNFTImg" src={imgTitlePet} />
+            </Col>
+            <Col>
+              <Image alt='NFT Meka' className="titleNFTImg" src={imgTitleMeka} />
+            </Col>
+          </Row>
+
+        </Container>
+      </Element>
+
+      <Element id='brand' name='brand' className='brand'>
+          <Row className='brandRow'>
+          
+            <Col>
+              <Image alt='Yahoo Visios Labs NFT' className="brandImg" src={imgBrandYahoo} />
+            </Col>
+            <Col>
+              <Image alt='Fox Visios Labs NFT' className="brandImg" src={imgBrandFox} />
+            </Col>
+            <Col>
+              <Image alt='Art Basel Visios Labs NFT' className="brandImg" src={imgBrandArtBasel} />
+            </Col>
+            <Col>
+              <Image alt='Benzinga Visios Labs NFT' className="brandImg" src={imgBrandBenzinga} />
+            </Col>
+            <Col>
+              <Image alt='MorningStar Visios Labs NFT' className="brandImg" src={imgBrandMorningstar} />
+            </Col>
+            <Col>
+              <Image alt='CoinMarketcap Visios Labs NFT' className="brandImg" src={imgBrandCoinMarketcap} />
+            </Col>
+            <Col>
+              <Image alt='NFTRadar Visios Labs NFT' className="brandImg" src={imgBrandNFTRadar} />
+            </Col>
+            <Col>
+              <Image alt='MarketWatch Visios Labs NFT' className="brandImg" src={imgBrandMarketWatch} />
+            </Col>
+          </Row>
+      </Element>
+
+      <Element id='value' name='value' className='value section'>
+        <Container>
+
+          <Row className='headerRow'>
+          {/* <Col className='valueImgCol1'>
+            <Row>              
+              <Image alt='Visios Labs NFT' className="valueImg" src={imgValueCircleBlue} />
+            </Row>
+          </Col> */}
+
+            <Col  className='valueCol'>
+              <h2 className='valueH2'>We didn't reinvent the wheel. Just NFT's.</h2>
+              <p className='valueP'>Don't worry about the tech.<br></br> <b>Top-tier NFT collections</b> built for you.</p>
+            </Col>
+
+            {/* <Col className='valueImgCol2'>
+              <Row>              
+                <Image alt='Visios Labs NFT' className="valueImg" src={imgValueCirclePurple} />
+              </Row>
+            </Col> */}
+
+          </Row>
+
+          <Row className='valueSrvRow'>
+            <Col className='valueSrvCol'>
+              <Image alt='Choose NFT services' className="valueGif" src={imgValuePick} />
+              <p className='valueSrvP'>Pick the NFT services that you want.</p>
+            </Col>
+            <Col className='valueSrvCol'>
+              <Image alt='NFT collection ready within weeks' className="valueGif" src={imgValueCalendar}/>
+              <p className='valueSrvP'>Have your NFT's ready within a 1-2 weeks.</p>
+            </Col>
+            <Col className='valueSrvCol'>
+              <Image alt='Revise NFT collection untill you are happy' className="valueGif" src={imgValueRevise} />
+              <p className='valueSrvP'>We'll revise the NFT's until you are 100% satisfied.</p>
+            </Col>
+          </Row>
+            
+
+          <Row className='valueQuoteRow'>
+            <Col className='valueQuoteCol'>
+              <Image alt='NFT quote' className="quoteImg" src={imgValueQuote} />
+              <h3 className='valueH3 quote'>Visios Labs masterfully fuses art and technology.</h3>
+              <Image alt='Art Basel Visios Labs NFT' className="brandImg quoteBrand" src={imgBrandArtBaselBlack} />
+            </Col>
+          </Row>
+        </Container>
+      </Element>
+
+      <Element id='approach' name='approach' className='approach section'>
+        <Container>
+          <Row className='headerRow'>
+            <Col className='approachCol'>
+              <h2 className='valueH2'>The NFT collection you want.<br></br> Without the effort.</h2>
+              <p className='valueP'>Visios Labs replaces unreliable freelancers and restrictive tools for a flat service-based fee. <b>Reap the benefits</b> from your premium NFT collection.</p>
+            </Col>
+          </Row>
+
+          <Row className='approachRow'>
+            <Col className='approachQuoteCol'>
+              <div className='approachQuoteDiv' >
+                <Image alt='NFT quote' className="quoteImg" src={imgValueQuote} />
+                <h3 className='approachH3 quote'>NFT's are the future, and these guys are building it.</h3>
+                <div class="approachMattDiv"> 
+                    <Image alt='Visios Labs recommendation' className="mattImg" src={imgApproachMatt} /> 
+                    <span className='mattSpan'>Matt Popovic, ⚡BlockSpark</span>
                 </div>
-              </Col>
-            </Row>
-          </Container>
-        </Element> */}
+              </div>
+            </Col>
+            <Col className='approachListCol'>
+                <h3 className='approachH3'>Tech is on us</h3>
+                <p className='approachP'>We'll write code, create art, build a website, and deploy assets for your NFT collection.</p>
+                <h3 className='approachH3'>Manage with Trello</h3>
+                <p className='approachP'>Manage your NFT collection using Trello. View active, queued and completed tasks with ease.</p>
+                <h3 className='approachH3' >You own the NFT collection</h3>
+                <p className='approachP' >We build it. You own it. You get 100% of the revenue from your NFT collection. </p>
+            </Col>
+          </Row>
+        </Container>
+      </Element>
 
-        <Element id='get_started' name='get_started'>
-          <Container className='sectionContainer'>
+      <Element id='services' name='services' className='services section'>
+        <Container>
+          <Row className='headerRow'>
+
+            <Col className='servicesImgCol'>
+              <Row>              
+                <Image alt='Visios Labs NFT' className="servicesImg" src={imgServicesIcon1} />
+              </Row>
+              <Row>              
+                <Image alt='Visios Labs NFT' className="servicesImg" src={imgServicesIcon2} />
+              </Row>
+            </Col>
+
+            <Col  className='servicesCol'>
+              <h2 className='valueH2'>Our services</h2>
+              <p className='valueP'>Amazing NFT services. A flat fee per service.<br></br> No hourly rates or hidden costs.</p>
+              <Link to="pricing" className='nav-scrolllink'>
+                <button className="titleBtn" variant="primary" size="lg">
+                  <span className="titleSpan">Get started</span> 
+                </button>
+              </Link>
+            </Col>
+
+            <Col className='servicesImgCol'>
+              <Row>              
+                <Image alt='Visios Labs NFT' className="servicesImg" src={imgServicesIcon3} />
+              </Row>
+              <Row>              
+                <Image alt='Visios Labs NFT' className="servicesImg" src={imgServicesIcon4} />
+              </Row>
+            </Col>
+          </Row>
+
+          <Row className='valueSrvRow'>
+            <Col className='valueSrvCol'>
+              <Image alt='Choose NFT services' className="valueGif" src={imgServicesArt} />
+              <h3 className='servicesH3'>Artwork</h3>
+              <p className='servicesP'>Beautiful NFT art based on your ideas.</p>
+            </Col>
+            <Col className='valueSrvCol'>
+              <Image alt='NFT collection ready within weeks' className="valueGif" src={imgServicesCode}/>
+              <h3 className='servicesH3'>NFT code</h3>
+              <p className='servicesP'>Your NFT collection coded up as smart contract.</p>
+            </Col>
+            <Col className='valueSrvCol'>
+              <Image alt='Revise NFT collection untill you are happy' className="valueGif" src={imgServicesUpload} />
+              <h3 className='servicesH3'>NFT deploy</h3>
+              <p className='servicesP'>All your NFT assets will be put on the Blockchain.</p>
+            </Col>
+          </Row>
+
+          <Row className='valueSrvRow'>
+            <Col className='valueSrvCol'>
+              <Image alt='Choose NFT services' className="valueGif" src={imgServicesWebsite} />
+              <h3 className='servicesH3'>Website</h3>
+              <p className='servicesP'>A website to highlight your collection, with direct NFT purchases.</p>
+            </Col>
+            <Col className='valueSrvCol'>
+              <Image alt='NFT collection ready within weeks' className="valueGif" src={imgServicesLaunch}/>
+              <h3 className='servicesH3'>Launch support</h3>
+              <p className='servicesP'>Ensure your launch runs smoothly.</p>
+            </Col>
+            <Col className='valueSrvCol'>
+              <Image alt='Revise NFT collection untill you are happy' className="valueGif" src={imgServicesDao} />
+              <h3 className='servicesH3'>DAO</h3>
+              <p className='servicesP'>Let NFT buyers govern with a Decentralized Autonomous Organization (DAO).</p>
+            </Col>
+          </Row>
+        </Container>
+      </Element>
+
+      <Element id='projects' name='projects' className='projects section'>
+        <Container>
+          <Row className='headerRow'>
+            <Col className='projectsCol'>
+              <h2 className='valueH2 white'>Built by us.</h2>
+            </Col>
+          </Row> 
+
+          <a href="https://masksofether.com" target={"_blank"} rel="noreferrer" className='projectsA'>
+          <Row className='projectsRow'>
+            <Col className='projectsMOECol'>
+              <h3 className='projectsH3 white'>Masks of Ether</h3>
+              <p className='projectsP white'>A collection of generative masks inspired by West-African tribal art. Aiming to share rich African culture in the NFT space.</p>
+              <Row className='projectsLogoRow1'>
+                <Col>
+                  <Image alt='Art Basel Visios Labs NFT' className="projectsBrandImg" src={imgBrandArtBasel} />
+                </Col>
+                <Col>
+                  <Image alt='Yahoo Visios Labs NFT' className="projectsBrandImg" src={imgBrandYahoo} />
+                </Col>
+                <Col>
+                  <Image alt='Fox Visios Labs NFT' className="projectsBrandImg" src={imgBrandFox} />
+                </Col>
+                <Col>
+                  <Image alt='NFT Radar Visios Labs NFT' className="projectsBrandImg" src={imgBrandNFTRadar} />
+                </Col>
+              </Row>
+            </Col>
+            <Col className='projectsNftImgCol'>
+              <Row>
+                <Col>
+                  <Image alt='Visios Labs and Masks of Ether NFT 1' className="projectsIcon" src={imgProjectsMask3} />
+                </Col>
+                <Col>
+                  <Image alt='Visios Labs and Masks of Ether NFT 2' className="projectsIcon" src={imgProjectsMask4} />
+                </Col>
+              </Row>
+
+              <Row className='projectsLogoRow2'>
+                <Col>
+                  <Image alt='Art Basel Visios Labs NFT' className="projectsBrandImg" src={imgBrandArtBasel} />
+                </Col>
+                <Col>
+                  <Image alt='Yahoo Visios Labs NFT' className="projectsBrandImg" src={imgBrandYahoo} />
+                </Col>
+                <Col>
+                  <Image alt='Fox Visios Labs NFT' className="projectsBrandImg" src={imgBrandFox} />
+                </Col>
+                <Col>
+                  <Image alt='NFT Radar Visios Labs NFT' className="projectsBrandImg" src={imgBrandNFTRadar} />
+                </Col>
+              </Row>
+
+            </Col>
+          </Row> 
+          </a>
+        </Container>
+      </Element>
+
+      <Element id='pricing' name='pricing' className='pricing section'>
+        <Container>
+          <Row className='headerRow'>
+            <Col className='pricingMainCol'>
+              <h2 className='valueH2'>Let's keep it simple</h2>
+              <p className='valueP'>Pick the services that are right for you.</p>
+            </Col>
+          </Row>
+
+          <Row className='pricingRow'>
+            <Col className='pricingCol'>
+              <Row>
+              <h3 className='pricingH3'>Artwork</h3>
+              <p className='pricingP'>Beautiful art for your NFT collection.</p>
+              <h3 className='pricingPriceH3'>
+                <NumberFormat value={2995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              </h3>
+              <hr className="pricingHr"></hr>
+              <p className='pricingExtraP'><b>What's included:</b> <br></br>• Unique and custom art<br></br>• 2D or 3D art<br></br>• Created with your input</p>
+              </Row>
+              <Row>
+                
+              <button className={this.state.artworkBool ? 'pricingBtn pricingBtnClicked': 'pricingBtn'} name='artwork' variant="primary" size="lg" onClick={(e) => {this.handleSelect(e); }}>
+                  {this.state.artworkBool ? 'Selected': 'Select service'}
+              </button>
+              </Row>
+            </Col>
+            <Col className='pricingCol'>
             <Row>
-              <Col className='mainCol'>                
-                  <Row>
-                    <Col className="mediumCol">
-                    <h2 className='welcome'>We’ll help launch your art into the NFT space.</h2>
-                    <p className='formParagraph'>Fill out the form, and we'll reach out to get your NFT journey started! Or reach us at: contact@visioslabs.com.</p>
+              <h3 className='pricingH3'>NFT code</h3>
+              <p className='pricingP'>Your NFT's as smart contract code.</p>
+              <h3 className='pricingPriceH3'>
+                <NumberFormat value={2995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              </h3>
+              <hr className="pricingHr"></hr>
+              <p className='pricingExtraP'><b>What's included:</b> <br></br>• Unlimited NFT's<br></br>• Secure and audited code<br></br>• Traditional or fractional NFT's</p>
+              </Row>
+              <Row>
+              <button className={this.state.codeBool ? 'pricingBtn pricingBtnClicked': 'pricingBtn'} name='code' variant="primary" size="lg" onClick={(e) => {this.handleSelect(e); }}>
+                {this.state.codeBool ? 'Selected': 'Select service'}
+              </button>
+              </Row>
+            </Col>
+            <Col className='pricingCol'>
+              <Row>
+              <h3 className='pricingH3'>NFT deploy</h3>
+              <p className='pricingP'>Your NFT's deployed on the blockchain.</p>
+              <h3 className='pricingPriceH3'>
+                <NumberFormat value={995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              </h3>
+              <hr className="pricingHr"></hr>
+              <p className='pricingExtraP'><b>What's included:</b> <br></br>• Deploy on a popular Blockchain<br></br>• Assets are decentralized<br></br>• We pay transaction fees</p>
+              </Row>
+              <Row>
+              <button className={this.state.deployBool ? 'pricingBtn pricingBtnClicked': 'pricingBtn'} name='deploy' variant="primary" size="lg" onClick={(e) => {this.handleSelect(e);  }}>
+                {this.state.deployBool ? 'Selected': 'Select service'}
+              </button>
+              </Row>
+            </Col>
+            <Col className='pricingCol yourServices pricingOrder1'>
+              <Row>
+              <h3 className='pricingH3'>Your services:</h3>
+              <p className='pricingListP'>{this.state.artworkBool ? <div>• Artwork <br></br></div> : ''}{this.state.codeBool ? <div>• NFT code <br></br></div> : ''}{this.state.deployBool ? <div>• NFT deploy <br></br></div> : ''}{this.state.websiteBool ? <div>• Website <br></br></div> : ''}{this.state.supportBool ? <div>• Launch support <br></br></div> : ''}{this.state.daoBool ? <div>• DAO <br></br></div> : ''}</p>
+              </Row>
+              <Row>
+              <hr className="pricingHr"></hr>
+              <span className='pricingtotalSpan'>Total:</span>
+              <h3 className='pricingFinalH3'>
+                <NumberFormat value={this.calcPrice()} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              </h3>
 
-                      <Form>
-                        <Form.Group className='startedForm' controlId="formBasicEmail">
-                          <Form.Label className='labelInput'>First name</Form.Label>
-                          <Form.Control className="input" name="firstname" type="name" isInvalid={this.state.firstname === "" && this.state.submitPress} onChange={(e) => { this.handleFormChange(e)}}/>
-                          <Form.Control.Feedback type='invalid'>
-                              This field cannot be empty
-                          </Form.Control.Feedback>
-                        </Form.Group>
+              <button className="pricingOrderBtn" name='order' variant="primary" size="lg">
+                    Order services
+              </button>
+              </Row>
+            </Col>
+          </Row>
 
-                        <Form.Group className='startedForm' controlId="formBasicEmail">
-                          <Form.Label className='labelInput'>Last name</Form.Label>
-                          <Form.Control className="input" name="lastname" type="name" isInvalid={this.state.lastname === "" && this.state.submitPress} onChange={(e) => { this.handleFormChange(e)}}/>
-                          <Form.Control.Feedback type='invalid'>
-                              This field cannot be empty
-                          </Form.Control.Feedback>
-                        </Form.Group>
+          <Row>
+            <Col className='pricingCol'>
+              <Row>
+              <h3 className='pricingH3'>Website</h3>
+              <p className='pricingP'>Website to highlight your NFT's.</p>
+              <h3 className='pricingPriceH3'>
+                <NumberFormat value={2995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              </h3>
+              <hr className="pricingHr"></hr>
+              <p className='pricingExtraP'><b>What's included:</b> <br></br>• Allows for NFT purchases<br></br>• Published on custom domain<br></br>• High quality design</p>
+              </Row>
+              <Row>
+              <button className={this.state.websiteBool ? 'pricingBtn pricingBtnClicked': 'pricingBtn'} name='website' variant="primary" size="lg" onClick={(e) => {this.handleSelect(e); }}>
+                {this.state.websiteBool ? 'Selected': 'Select service'}
+              </button>
+              </Row>
+            </Col>
+            <Col className='pricingCol'>
+              <Row>
+              <h3 className='pricingH3'>Launch support</h3>
+              <p className='pricingP'>Guidance through your NFT launch.</p>
+              <h3 className='pricingPriceH3'>
+                <NumberFormat value={995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              </h3>
+              <hr className="pricingHr"></hr>
+              <p className='pricingExtraP'><b>What's included:</b> <br></br>• Direct chat support<br></br>• Launch strategies<br></br>• Advice on 3rd party services</p>
+              </Row>
+              <Row>
+              <button className={this.state.supportBool ? 'pricingBtn pricingBtnClicked': 'pricingBtn'} name='support' variant="primary" size="lg" onClick={(e) => {this.handleSelect(e); }}>
+                {this.state.supportBool ? 'Selected': 'Select service'}
+              </button>
+              </Row>
+            </Col>
+            <Col className='pricingCol'>
+              <Row>
+              <h3 className='pricingH3'>DAO</h3>
+              <p className='pricingP'>Let your NFT buyers govern with a DAO.</p>
+              <h3 className='pricingPriceH3'>
+                <NumberFormat value={6995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              </h3>
+              <hr className="pricingHr"></hr>
+              <p className='pricingExtraP'><b>What's included:</b> <br></br>• NFT holders can vote<br></br>• Introduce proposals to improve project</p>
+              </Row>
+              <Row>
+              <button className={this.state.daoBool ? 'pricingBtn pricingBtnClicked': 'pricingBtn'} name='dao' variant="primary" size="lg" onClick={(e) => {this.handleSelect(e); }}>
+                {this.state.daoBool ? 'Selected': 'Select service'}
+              </button>
+              </Row>
+            </Col>
+            <Col className='pricingCol yourServices pricingOrder2'>
+              <Row>
+              <h3 className='pricingH3'>Your Services:</h3>
+              <p className='pricingListP'>{this.state.artworkBool ? <div>• Artwork <br></br></div> : ''}{this.state.codeBool ? <div>• NFT code <br></br></div> : ''}{this.state.deployBool ? <div>• NFT deploy <br></br></div> : ''}{this.state.websiteBool ? <div>• Website <br></br></div> : ''}{this.state.supportBool ? <div>• Launch support <br></br></div> : ''}{this.state.daoBool ? <div>• DAO <br></br></div> : ''}</p>
+              </Row>
+              <Row>
+              <hr className="pricingHr"></hr>
+              <span className='pricingtotalSpan'>Total:</span>
+              <h3 className='pricingFinalH3'>
+                <NumberFormat value={this.calcPrice()} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+              </h3>
 
-                        <Form.Group className='startedForm' controlId="formBasicEmail">
-                          <Form.Label className='labelInput'>Email address</Form.Label>
-                          <Form.Control className="input" name="email" type="email" isInvalid={(this.state.email === "" || !this.state.email.includes("@")) && this.state.submitPress} onChange={(e) => { this.handleFormChange(e)}}/>
-                          <Form.Control.Feedback type='invalid'>
-                            {this.state.email === "" ? "This field cannot be empty" : "Please enter a valid email"}
-                              
-                          </Form.Control.Feedback>
-                        </Form.Group>
+              <button className="pricingOrderBtn" name='order' variant="primary" size="lg">
+                    Order services
+              </button>
+              </Row>
+            </Col>
+            <Col className='pricingCol'>
+              <Row>
+              <h3 className='pricingH3'>Questions?</h3>
+              <p className='pricingP'>Anything you want to know about our services?</p>
+              <RouterLink className='pricingLink' to="/contact">Contact us</RouterLink>
+              </Row>
+              <Row>
+              <h3 className='pricingH3 marginH3'>Book a call</h3>
+              <p className='pricingP'>Learn more about Visios Labs and how we can help you in the NFT space.</p>
+              <a href='https://masksofether.com' className='pricingLink'>Unavailable</a>
+              </Row>
 
-                        <Form.Group className='startedForm' controlId="formBasicEmail">
-                            <Form.Label className='labelInput'>Tell us about your project</Form.Label>
-                            <Form.Control className='input' name="query" as="textarea" rows={2} isInvalid ={this.state.query === "" && this.state.submitPress}onChange={(e) => { this.handleFormChange(e)}}/>
-                            <Form.Control.Feedback type='invalid'>
-                                This field cannot be empty
-                            </Form.Control.Feedback>
-                        </Form.Group>
+            </Col>
+          </Row>
+        </Container>
+      </Element>
 
-                        <Row>
-                          <Col className="mainCol">
-                            <Button className="formBtn" type="submit" variant="primary" size="lg" onClick={(e) => {this.handleSubmit(e)}}>
-                              <span className="startSpan">Submit</span> 
-                            </Button>
-                          </Col>
-                          {/* <Col>
-                            <ReCAPTCHA className="captcha" sitekey="6Ld2VKofAAAAACTDV3SjzukLm_Yc7M5jYy6ChkWB" onChange={onChange}/>
-                          </Col> */}
-                        </Row>
-                        
-                      </Form>
-                    </Col>
-                    <Col className='featuredCol'>
-                        <Image  alt='launch nft collection' className="rocketImage" src={imgRocket} />
-                    </Col>
-                  </Row>
-              </Col>
-            </Row>
+      <Element id='faq' name='faq' className='faq section'>
+        <Container>
+          <Row className='headerRow'>
+            <Col className='faqCol'>
+              <h2 className='valueH2'>FAQ</h2>
+            </Col>
+          </Row>
+          <Row className='faqRow'>
+            <Col>
+              <Accordion className='faqAccordion'>
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header><span className='faqHeader'>What are NFTs?</span></Accordion.Header>
+                  <Accordion.Body >
+                  <span className='faqBody'>NFT's are an exciting new technology that allows for true ownership of digital assets. We can now own provably own things like digital art, sports cards, games, music, videos and more.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                  <Accordion.Header><span className='faqHeader'>Why would I want an NFT collection?</span></Accordion.Header>
+                  <Accordion.Body>
+                  <span className='faqBody'>Creating an NFT collection is a great way to sell your digital assets and create a 
+community centred around your digital creations. You can earn significant revenue from digitizing your work as an NFT collection.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+
+                <Accordion.Item eventKey="2">
+                  <Accordion.Header><span className='faqHeader'>Why wouldn't I just hire a full-time developer?</span></Accordion.Header>
+                  <Accordion.Body >
+                  <span className='faqBody'>The annual costs of a full-time senior-level Blockchain Engineer now exceeds $200,000,
+plus benefits (and good luck finding one available). You may not have enough work to
+keep them busy at all times, so you'll end up paying for unused time.
+<br></br>
+With our service model you'll pay a flat fee and only
+pay for the services that you want.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="3">
+                  <Accordion.Header><span className='faqHeader'>How fast will my NFT collection be built?</span></Accordion.Header>
+                  <Accordion.Body>
+                  <span className='faqBody'>On average NFT collections are built within 1-2 weeks but depending on the services
+selected and the complexity of the request it might take longer.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+
+                <Accordion.Item eventKey="4">
+                  <Accordion.Header><span className='faqHeader'>What size can my NFT collection be?</span></Accordion.Header>
+                  <Accordion.Body >
+                  <span className='faqBody'>Your collection can be any size. You can make it as big as you want!</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="5">
+                  <Accordion.Header><span className='faqHeader'>Do I keep the revenue from my NFT sales?</span></Accordion.Header>
+                  <Accordion.Body>
+                  <span className='faqBody'>Yes! You keep 100% of the revenue of the NFT sales. We build the NFT collection and you own it.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="6">
+                  <Accordion.Header><span className='faqHeader'>How do I make requests for my NFT collection?</span></Accordion.Header>
+                  <Accordion.Body>
+                  <span className='faqBody'>We offer a lot of flexibility in how you share your requests. Clients typically share what
+they want as a Google docs, a Wireframe or even a video. Basically if you can share it
+in Trello it is fine. Alternatively you can email us with requests at: contact@visioslabs.com.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+
+                <Accordion.Item eventKey="7">
+                  <Accordion.Header><span className='faqHeader'>What if I don't like my NFT collection?</span></Accordion.Header>
+                  <Accordion.Body >
+                  <span className='faqBody'>No worries! We will continue to make revisions until you are 100% satisfied.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="8">
+                  <Accordion.Header><span className='faqHeader'>Are there any other fees? Do I pay gas fees?</span></Accordion.Header>
+                  <Accordion.Body>
+                  <span className='faqBody'>We cover all fees. So you won't have to pay gas fees.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+
+                <Accordion.Item eventKey="9">
+                  <Accordion.Header><span className='faqHeader'>Are there any refunds if I don't like the services? </span></Accordion.Header>
+                  <Accordion.Body>
+                  <span className='faqBody'>Due to the high quality nature of the work there wont be any refunds issued.</span>
+                  </Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            </Col>
+          </Row>
           </Container>
-        </Element>
+      </Element>
 
-        <hr className="hrFooter" style={{backgroundColor: "#C1C8E4"}}></hr>
-        <footer>
+      <Element id='getStarted' name='getStarted' className='getStarted section'>
+        <Container>
+          <Row className='headerRow'>
+            <Col className='getStartedCol'>
+              <h2 className='valueH2 white'>Ready to jump into the NFT space?</h2>
+              <p className='valueP white'>Check out our services, and find out how you can leave your mark in the NFT space.</p>
+              <Link to="pricing" className='nav-scrolllink'>
+                <button className="getStartedBtn" >
+                  Get started
+                </button>
+              </Link>
+            </Col>
+          </Row>
+          <Row className='getStartedBrandRow'>
+            <Col>
+              <Image alt='Yahoo Visios Labs NFT' className="brandImg" src={imgBrandYahoo} />
+            </Col>
+            <Col>
+              <Image alt='Fox Visios Labs NFT' className="brandImg" src={imgBrandFox} />
+            </Col>
+            <Col>
+              <Image alt='Art Basel Visios Labs NFT' className="brandImg" src={imgBrandArtBasel} />
+            </Col>
+            <Col>
+              <Image alt='Benzinga Visios Labs NFT' className="brandImg" src={imgBrandBenzinga} />
+            </Col>
+            <Col>
+              <Image alt='MorningStar Visios Labs NFT' className="brandImg" src={imgBrandMorningstar} />
+            </Col>
+            <Col>
+              <Image alt='CoinMarketcap Visios Labs NFT' className="brandImg" src={imgBrandCoinMarketcap} />
+            </Col>
+            <Col>
+              <Image alt='NFTRadar Visios Labs NFT' className="brandImg" src={imgBrandNFTRadar} />
+            </Col>
+            <Col>
+              <Image alt='MarketWatch Visios Labs NFT' className="brandImg" src={imgBrandMarketWatch} />
+            </Col>
+          </Row>
+        </Container>
+      </Element>
+
+
+      <footer className='footer'>
           <Container>
             <Row>
-              <Col className='leftTraitsCol' >
-                <Image alt='visios labs logo' src={logo} className='footerImage' roundedCircle/>
+              <Col className='footerLeftCol' >
+                <Image alt='visios labs logo' src={logoWhite} className='footerImage'/>
               </Col>
             
 
-              <Col className="rightTraitsCol">
-                <Row> <p className="copyrightText">Copyright © Visios Labs</p></Row>
+              <Col className="footerRightCol">
+                <Row> <p className="copyrightText white">Copyright © Visios Labs</p></Row>
               </Col>
             </Row>
           </Container>
