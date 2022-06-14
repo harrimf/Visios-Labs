@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { loadStripe } from '@stripe/stripe-js';
 import logo from './images/v2/visios_labs_logo.svg'
 import logoWhite from './images/v2/visios_labs_logo_white.svg'
 import {Navbar, Nav, Button, Container, Row, Col, Image, Accordion, Form} from 'react-bootstrap'
@@ -7,55 +7,14 @@ import { Link, Element } from 'react-scroll'
 import { Link as RouterLink} from "react-router-dom";
 import NumberFormat from 'react-number-format';
 
+import imgTitleArt from './images/v2/art_title_v2.svg'
+import imgTitleCode from './images/v2/code_title_v2.svg'
+import imgTitleUpload from './images/v2/deploy_title_v2.svg'
+import imgTitleWebsite from './images/v2/website_title_v2.svg'
+import imgTitleLaunch from './images/v2/launch_title_v2.svg'
+import imgTitleDao from './images/v2/dao_title_v2.svg'
 
-import imgStart_1 from './images/star_square.svg'
-import imgStart_2 from './images/triangle_square.svg'
-import imgStart_3 from './images/clip_square.svg'
-import imgStart_4 from './images/circle_square.svg'
 
-import imgStartGraphic from './images/graphic_start.svg'
-
-import imgCollection from './images/nft_list_alt_2.svg'
-
-import imgTech from './images/tech_icon.svg'
-import imgGuidance from './images/guidance_icon.svg'
-import imgOwnership from './images/ownership_icon.svg'
-
-import imgApproach from './images/approach_graphic.svg'
-
-import imgSub_1 from './images/icon_star_blue.svg'
-import imgSub_2 from './images/icon_clip_orange.svg'
-import imgSub_3 from './images/icon_diamond_purple.svg'
-import imgSub_4 from './images/icon_circle_magenta.svg'
-import imgSub_5 from './images/icon_clip_magenta.svg'
-import imgSub_6 from './images/icon_star_orange.svg'
-import imgSub_7 from './images/icon_diamond_blue.svg'
-import imgSub_8 from './images/icon_circle_purple.svg'
-import imgSub_9 from './images/icon_star_magenta.svg'
-import imgSub_10 from './images/icon_circle_orange.svg'
-
-import imgNews from './images/news_side_image.svg'
-
-import imgSmartContract from './images/smart_contract_icon_alt.svg'
-import imgAsset from './images/asset_icon_alt.svg'
-import imgArtwork from './images/artwork_icon_alt.svg'
-import imgWebsite from './images/website_icon_alt.svg'
-import imgSupport from './images/support_icon_alt.svg'
-
-import imgBarRed from './images/stat_bar_red.svg'
-import imgBarPurple from './images/stat_bar_purple.svg'
-import imgFeatured_1 from './images/moe_banner.svg'
-import imgStat_1 from './images/stat_1_image.svg'
-import imgStat_2 from './images/stat_2_image.svg'
-
-import imgRocket from './images/success_rocket.svg'
-
-import imgTitleArt from './images/v2/art_title.png'
-import imgTitleCode from './images/v2/code_title.png'
-import imgTitleUpload from './images/v2/upload_title.png'
-import imgTitleWebsite from './images/v2/website_title.png'
-import imgTitleLaunch from './images/v2/launch_title.png'
-import imgTitleDao from './images/v2/dao_title.png'
 
 import imgTitleApe from './images/v2/ape_title.png'
 import imgTitleMask from './images/v2/mask_title.png'
@@ -115,10 +74,9 @@ import imgProjectsMask8 from './images/v2/mask_8_lgs.svg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ReCAPTCHA from "react-google-recaptcha";
 
-
-
 import './App.css';
 
+const stripePromise = loadStripe('pk_test_51L6WpqFk7v1VdnPeVY4BdOMjFqmcdjrydNW88NzWTCQykAYxsKcMnN4ugiLweTriWAPOJXPcmYuT73OX42OXT3CR00DVQQSBtr')
 
 
 class App extends Component {
@@ -138,6 +96,120 @@ class App extends Component {
   componentWillUnmount() {
       window.removeEventListener("resize", this.resize.bind(this));
   }
+
+  handleOrder = async (e) => {
+    e.preventDefault()
+
+    // const artworkId = "price_1L7JrRFk7v1VdnPe7CAyzBQn"
+    // const codeId = "price_1L7JsQFk7v1VdnPe62k2KsK5"
+    // const deployId = "price_1L7Jt8Fk7v1VdnPeLe5DGttI"
+    // const websiteId = "price_1L7JtwFk7v1VdnPe0NS12BWY"
+    // const supportId = "price_1L7JuTFk7v1VdnPex3XfbCdi"
+    // const daoId = "price_1L7JurFk7v1VdnPevx55W8Cb"
+
+    // var services = []
+
+
+    // if(this.state.artworkBool) {
+    //   const service = {
+    //     price: artworkId,
+    //     quantity: 1,
+    //   };
+    //   services.push(service)
+    // }
+
+    // if(this.state.codeBool) {
+    //   const service = {
+    //     price: codeId,
+    //     quantity: 1,
+    //   };
+    //   services.push(service)
+    // }
+
+    // if(this.state.deployBool) {
+    //   const service = {
+    //     price: deployId,
+    //     quantity: 1,
+    //   };
+    //   services.push(service)
+    // }
+
+    // if(this.state.websiteBool) {
+    //   const service = {
+    //     price: websiteId,
+    //     quantity: 1,
+    //   };
+    //   services.push(service)
+    // }
+
+    // if(this.state.supportBool) {
+    //   const service = {
+    //     price: supportId,
+    //     quantity: 1,
+    //   };
+    //   services.push(service)
+    // }
+
+    // if(this.state.daoBool) {
+    //   const service = {
+    //     price: daoId,
+    //     quantity: 1,
+    //   };
+    //   services.push(service)
+    // }
+
+  const philosopherBool = true
+  const sahelanthropusBool = true
+  const rexBool = true
+
+  const philosopherId = "price_1L7JBjFk7v1VdnPeP6PA8mEx"
+  const sahelanthropusId = "price_1L80qvFk7v1VdnPefyMYJMW4"
+  const rexId = "price_1L80q4Fk7v1VdnPeFdxZny7H"
+
+  var services = []
+
+
+  if(philosopherBool) {
+    const service = {
+      price: philosopherId,
+      quantity: 1,
+    };
+    services.push(service)
+  }
+
+  if(sahelanthropusBool) {
+    const service = {
+      price: sahelanthropusId,
+      quantity: 1,
+    };
+    services.push(service)
+  }
+
+  if(rexBool) {
+    const service = {
+      price: rexId,
+      quantity: 1,
+    };
+    services.push(service)
+  }
+
+  console.log(services)
+
+
+    if(services.length > 0) {
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({
+        lineItems: services,
+        mode: 'payment',
+        successUrl: 'https://visioslabs.com/success',
+        cancelUrl: 'https://visioslabs.com',
+      });
+
+      
+    }
+   
+
+  };
 
 
   handleSelect = (e) => {
@@ -404,7 +476,7 @@ render() {
             </Col>
             <Col className='valueSrvCol'>
               <Image alt='NFT collection ready within weeks' className="valueGif" src={imgValueCalendar}/>
-              <p className='valueSrvP'>Have your NFT's ready within a 1-2 weeks.</p>
+              <p className='valueSrvP'>Have your NFT's ready within 1-2 weeks.</p>
             </Col>
             <Col className='valueSrvCol'>
               <Image alt='Revise NFT collection untill you are happy' className="valueGif" src={imgValueRevise} />
@@ -600,7 +672,7 @@ render() {
               <h3 className='pricingH3'>Artwork</h3>
               <p className='pricingP'>Beautiful art for your NFT collection.</p>
               <h3 className='pricingPriceH3'>
-                <NumberFormat value={2995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                <NumberFormat value={this.state.artworkPrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
               </h3>
               <hr className="pricingHr"></hr>
               <p className='pricingExtraP'><b>What's included:</b> <br></br>• Unique and custom art<br></br>• 2D or 3D art<br></br>• Created with your input</p>
@@ -617,7 +689,7 @@ render() {
               <h3 className='pricingH3'>NFT code</h3>
               <p className='pricingP'>Your NFT's as smart contract code.</p>
               <h3 className='pricingPriceH3'>
-                <NumberFormat value={2995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                <NumberFormat value={this.state.codePrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
               </h3>
               <hr className="pricingHr"></hr>
               <p className='pricingExtraP'><b>What's included:</b> <br></br>• Unlimited NFT's<br></br>• Secure and audited code<br></br>• Traditional or fractional NFT's</p>
@@ -633,7 +705,7 @@ render() {
               <h3 className='pricingH3'>NFT deploy</h3>
               <p className='pricingP'>Your NFT's deployed on the blockchain.</p>
               <h3 className='pricingPriceH3'>
-                <NumberFormat value={995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                <NumberFormat value={this.state.deployPrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
               </h3>
               <hr className="pricingHr"></hr>
               <p className='pricingExtraP'><b>What's included:</b> <br></br>• Deploy on a popular Blockchain<br></br>• Assets are decentralized<br></br>• We pay transaction fees</p>
@@ -656,8 +728,8 @@ render() {
                 <NumberFormat value={this.calcPrice()} displayType={'text'} thousandSeparator={true} prefix={'$'} />
               </h3>
 
-              <button className="pricingOrderBtn" name='order' variant="primary" size="lg">
-                    Order services
+              <button className="pricingOrderBtn" role="link" name='order' variant="primary" size="lg" onClick={(e) => {this.handleOrder(e); }}>
+                    Checkout
               </button>
               </Row>
             </Col>
@@ -669,7 +741,7 @@ render() {
               <h3 className='pricingH3'>Website</h3>
               <p className='pricingP'>Website to highlight your NFT's.</p>
               <h3 className='pricingPriceH3'>
-                <NumberFormat value={2995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                <NumberFormat value={this.state.websitePrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
               </h3>
               <hr className="pricingHr"></hr>
               <p className='pricingExtraP'><b>What's included:</b> <br></br>• Allows for NFT purchases<br></br>• Published on custom domain<br></br>• High quality design</p>
@@ -685,7 +757,7 @@ render() {
               <h3 className='pricingH3'>Launch support</h3>
               <p className='pricingP'>Guidance through your NFT launch.</p>
               <h3 className='pricingPriceH3'>
-                <NumberFormat value={995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                <NumberFormat value={this.state.supportPrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
               </h3>
               <hr className="pricingHr"></hr>
               <p className='pricingExtraP'><b>What's included:</b> <br></br>• Direct chat support<br></br>• Launch strategies<br></br>• Advice on 3rd party services</p>
@@ -701,7 +773,7 @@ render() {
               <h3 className='pricingH3'>DAO</h3>
               <p className='pricingP'>Let your NFT buyers govern with a DAO.</p>
               <h3 className='pricingPriceH3'>
-                <NumberFormat value={6995} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+                <NumberFormat value={this.state.daoPrice} displayType={'text'} thousandSeparator={true} prefix={'$'} />
               </h3>
               <hr className="pricingHr"></hr>
               <p className='pricingExtraP'><b>What's included:</b> <br></br>• NFT holders can vote<br></br>• Introduce proposals to improve project</p>
@@ -724,8 +796,8 @@ render() {
                 <NumberFormat value={this.calcPrice()} displayType={'text'} thousandSeparator={true} prefix={'$'} />
               </h3>
 
-              <button className="pricingOrderBtn" name='order' variant="primary" size="lg">
-                    Order services
+              <button className="pricingOrderBtn" role="link" name='order' variant="primary" size="lg" onClick={(e) => {this.handleOrder(e); }}>
+                    Checkout
               </button>
               </Row>
             </Col>
@@ -736,9 +808,9 @@ render() {
               <RouterLink className='pricingLink' to="/contact">Contact us</RouterLink>
               </Row>
               <Row>
-              <h3 className='pricingH3 marginH3'>Book a call</h3>
-              <p className='pricingP'>Learn more about Visios Labs and how we can help you in the NFT space.</p>
-              <a href='https://masksofether.com' className='pricingLink'>Unavailable</a>
+              <h3 className='pricingH3 marginH3'>Special requests?</h3>
+              <p className='pricingP'>Contact our sales team and we'll look at getting you started in the NFT space.</p>
+              <RouterLink className='pricingLink' to="/sales">Contact sales</RouterLink>
               </Row>
 
             </Col>

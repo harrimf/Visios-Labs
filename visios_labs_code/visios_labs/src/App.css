@@ -884,8 +884,8 @@ button {
 }
 
 .pricingOrderBtn {
-  background-color: transparent;
-  color: #EB5C34;
+  background-color: #EB5C34;
+  color: white;
   font-weight: 700;
   border: 2px solid #EB5C34 ;
   border-radius: 12px;
@@ -901,8 +901,7 @@ button {
 
 
 .pricingOrderBtn:hover {
-  background-color: #EB5C34;
-  color: white;
+  background-color: #EF7C5C;
   /* box-shadow: 4px 4px 1px 0px rgba(0, 0, 0, 0.25);
   transform: translateY(3px); */
 }
@@ -1038,6 +1037,48 @@ button {
     font-size: 24px;
   }
 
+
+}
+
+.success{
+  background-color: white;
+}
+
+.successImg {
+  width: 10vw;
+  height: 10vw;
+  margin-bottom: 30px;
+}
+
+.successP {
+  font-weight: 400;
+  font-size: 28px;
+  color: black;
+  margin-bottom: 30px;
+}
+
+.successLink {
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+
+
+@media only screen and (max-width: 760px) {
+  .successImg {
+    width: 40vw;
+    height: 40vw;
+  }
+
+  .successP {
+    font-size: 21px;
+  }
+
+  .successLink {
+    font-size: 21px;
+  }
+  
 
 }
 

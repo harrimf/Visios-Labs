@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Contact from './Contact';
+import Sales from './Sales';
+import Success from './Success';
+
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
@@ -13,7 +16,10 @@ ReactDOM.render(
     <Router>
     <Routes>
       <Route path="/" element={<App />} />
-      <Route path="contact" element={<Contact />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/success" element={<Success />} />
+      <Route path="/sales" element={<Sales />} />
+
     </Routes>
   </Router>
   </React.StrictMode>,
